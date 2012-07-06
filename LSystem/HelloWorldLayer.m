@@ -10,8 +10,21 @@
 // Import the interfaces
 #import "HelloWorldLayer.h"
 
+#import "DrawContext.h"
+#import "LSystem.h"
+#import "DrawState.h"
+
+@interface HelloWorldLayer () {
+    CGFloat duration;
+    CGFloat time;
+}
+@property (nonatomic, retain) LSystem *lsys;
+@end
+
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
+
+@synthesize lsys;
 
 +(CCScene *) scene
 {
@@ -28,36 +41,62 @@
 	return scene;
 }
 
-// on "init" you need to initialize your instance
 -(id) init
 {
-	// always call "super" init
-	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
-		
-		// create and initialize a Label
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-
-		// ask director the the window size
-		CGSize size = [[CCDirector sharedDirector] winSize];
-	
-		// position the label on the center of the screen
-		label.position =  ccp( size.width /2 , size.height/2 );
-		
-		// add the label as a child to this Layer
-		[self addChild: label];
+		                
+        CGPoint centre = ccpMult(ccpFromSize(self.contentSize), 0.5);
+        
+        self.lsys = [[[LSystem alloc] init] autorelease];
+        lsys.ctx.position = centre;
+        [self addChild:lsys.ctx];
+                
+        NSDictionary *straight = [NSDictionary dictionaryWithObjectsAndKeys:@"FFF", @"1", nil];
+        NSDictionary *bend = [NSDictionary dictionaryWithObjectsAndKeys:@"FF-1", @"1", nil];
+        NSDictionary *branches = [NSDictionary dictionaryWithObjectsAndKeys:@"FF-[1]++F+F", @"1", nil];
+        NSDictionary *moreBranches = [NSDictionary dictionaryWithObjectsAndKeys:@"FF-[1]++F+F+1", @"1", nil];
+        NSDictionary *elaborate = [NSDictionary dictionaryWithObjectsAndKeys:@"FF[-2]3[+3]", @"1", @"FF+F-F-F[FFF3][+3]-F-F3", @"2", @"FF-F+F+F[2][-2]+F+F2", @"3", nil];
+        
+        NSDictionary *gnarled = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"FF[++FF[2][+FF2]][-FF3]", @"1",
+                                 @"F-F-F+[2]F+F+F+F+>[2]", @"2",
+                                 @"F+F+F-[2]F-F-F-F->[2]", @"3",
+                                 nil];
+        
+        NSDictionary *crooked = [NSDictionary dictionaryWithObjectsAndKeys:@"F-F+2", @"1", @"F-[[-F-F+F+FF2]+FF2]+F[+F+F+FF2]-FF+F-F2", @"2", nil];
+        
+        lsys.rules = moreBranches;
+        lsys.segmentLength = 50;
+//        lsys.cost = 5;
+        
+        NSInteger generations = 6;
+        
+        duration = [lsys duration:generations];
+        time = 0;
+        
+        CCLOG(@"lsystem duration = %f", duration);
+                
+        [self scheduleUpdate];
 	}
 	return self;
+}
+
+-(void) update:(ccTime)dt {
+    if (time < duration) {
+        time += dt;
+        
+        CGPoint centre = ccpMult(ccpFromSize(self.contentSize), 0.5);
+        
+        CGPoint pos = ccp(centre.x, 0);
+        
+        [lsys draw:pos generation:6 time:time ease:-1];        
+    }
 }
 
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
-	// in case you have something to dealloc, do it in this method
-	// in this particular example nothing needs to be released.
-	// cocos2d will automatically release all the children (Label)
-	
-	// don't forget to call "super dealloc"
+    [lsys release];
 	[super dealloc];
 }
 @end
