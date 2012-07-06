@@ -14,8 +14,6 @@
 @property (nonatomic, assign) CGPoint translation;
 @property (nonatomic, assign) CGFloat rotation;
 @property (nonatomic, assign) CGFloat scale;
-@property (nonatomic, assign) ccColor3B lineColor;
-@property (nonatomic, assign) CGFloat segmentSize;
 
 +(id) state;
 +(id) stateWithState:(DrawState*)state;

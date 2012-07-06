@@ -10,6 +10,10 @@
 
 @class DrawState;
 
+/**
+ Coordinate system uses degrees for rotation with 0 degrees point vertically up on the y-axis.
+ Positive rotation moves clockwise around the current translation.
+ */
 @interface DrawContext : CCNode
 
 @property (nonatomic, readonly) DrawState *currentState;
@@ -19,10 +23,5 @@
 -(void) scale:(CGFloat)scale;
 -(void) push;
 -(void) pop;
--(void) lineColor:(ccColor3B)color;
--(void) segmentSize:(CGFloat)size;
-
-/** Draw forward */
--(void) forward:(CGFloat)length;
 
 @end

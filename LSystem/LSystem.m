@@ -9,8 +9,9 @@
 #import "LSystem.h"
 
 #import "DrawContext.h"
+#import "DrawState.h"
 
-#define LSYS_DURATION_MAX 1000.f
+#define LSYS_DURATION_MAX 100000.f
 
 @implementation LSystem
 
@@ -22,6 +23,7 @@
 @synthesize cost;
 @synthesize root;
 @synthesize ctx;
+@synthesize segment;
 
 -(id) init {
     if ((self = [super init])) {
@@ -42,6 +44,7 @@
 -(void) dealloc {
     [rules release];
     [ctx release];
+    [segment release];
     [super dealloc];
 }
 
@@ -118,23 +121,28 @@
         _segments += 1;
         if (draw && time >= 0) {
             length = MIN(length, length*time);
-            if (_timed) {
-                [self segment:length generation:generation time:time identifier:_segments];
-            } else {
-                [self segment:length generation:generation time:-1 identifier:_segments];                
-            }
             
-            // translate position to end of drawn segment
-//            [ctx translate:CGPointMake(0, length)];
+            DrawState *state = ctx.currentState;
+            CGPoint p1 = state.translation;
+            
+            [ctx translate:CGPointMake(0, length)];
+            
+            CGPoint p2 = state.translation;
+                        
+            if (_timed) {
+                [segment segmentFrom:p1 to:p2 generation:generation time:time identifier:_segments];
+            } else {
+                [segment segmentFrom:p1 to:p2 generation:generation time:-1 identifier:_segments];
+            }
         }
     }
 }
 
--(void) segment:(CGFloat)length generation:(NSInteger)generation time:(CGFloat)time identifier:(NSInteger)identifier {
-    [ctx lineColor:ccc3(255*CCRANDOM_0_1(), 255*CCRANDOM_0_1(), 255*CCRANDOM_0_1())];
-    [ctx segmentSize:generation * 2];
-    [ctx forward:length];    
-}
+//-(void) segment:(CGFloat)length generation:(NSInteger)generation time:(CGFloat)time identifier:(NSInteger)identifier {
+//    [ctx lineColor:ccc3(255*CCRANDOM_0_1(), 255*CCRANDOM_0_1(), 255*CCRANDOM_0_1())];
+//    [ctx segmentSize:generation * 2];
+//    [ctx forward:length];    
+//}
 
 /** Returns the total draw time needed based on the current cost.
  
@@ -178,16 +186,15 @@
         _timed = NO;
         time = LSYS_DURATION_MAX;
     }
-        
-//    mode = ctx.transform()
-//    ctx.transform(CORNER)
+    
+    // clear existing drawing
+    [segment clear];
+    
     [ctx push];
     [ctx translate:pos];
     [self reset];
-    //[self growGeneration:generation withRule:self.root angle:self.angle length:self.segmentLength];
     [self growGeneration:generation withRule:self.root angle:angleToUse length:self.segmentLength time:time draw:YES];
     [ctx pop];
-//    ctx.transform(mode)
 }
 
 @end

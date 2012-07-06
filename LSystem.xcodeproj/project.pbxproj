@@ -125,6 +125,7 @@
 		497760DA15307BA400D9F40D /* LSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760D915307BA400D9F40D /* LSystem.m */; };
 		497760DD153080A500D9F40D /* DrawContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760DC153080A500D9F40D /* DrawContext.m */; };
 		49D3EA2115A71FA800DA0A32 /* DrawState.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D3EA2015A71FA700DA0A32 /* DrawState.m */; };
+		49D3EA2515A745C800DA0A32 /* RenderTextureSegmentDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -369,6 +370,8 @@
 		497760DC153080A500D9F40D /* DrawContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawContext.m; sourceTree = "<group>"; };
 		49D3EA1F15A71FA700DA0A32 /* DrawState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawState.h; sourceTree = "<group>"; };
 		49D3EA2015A71FA700DA0A32 /* DrawState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawState.m; sourceTree = "<group>"; };
+		49D3EA2315A745C800DA0A32 /* RenderTextureSegmentDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderTextureSegmentDrawer.h; sourceTree = "<group>"; };
+		49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderTextureSegmentDrawer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -441,6 +444,8 @@
 				497760DC153080A500D9F40D /* DrawContext.m */,
 				49D3EA1F15A71FA700DA0A32 /* DrawState.h */,
 				49D3EA2015A71FA700DA0A32 /* DrawState.m */,
+				49D3EA2315A745C800DA0A32 /* RenderTextureSegmentDrawer.h */,
+				49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */,
 			);
 			path = LSystem;
 			sourceTree = "<group>";
@@ -943,6 +948,7 @@
 				497760DA15307BA400D9F40D /* LSystem.m in Sources */,
 				497760DD153080A500D9F40D /* DrawContext.m in Sources */,
 				49D3EA2115A71FA800DA0A32 /* DrawState.m in Sources */,
+				49D3EA2515A745C800DA0A32 /* RenderTextureSegmentDrawer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

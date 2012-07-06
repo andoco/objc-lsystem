@@ -13,8 +13,6 @@
 @synthesize translation;
 @synthesize rotation;
 @synthesize scale;
-@synthesize lineColor;
-@synthesize segmentSize;
 
 +(id) state {
     DrawState *newState = [[[DrawState alloc] init] autorelease];
@@ -27,8 +25,6 @@
     newState.translation = state.translation;
     newState.rotation = state.rotation;
     newState.scale = state.scale;
-    newState.lineColor = state.lineColor;
-    newState.segmentSize = state.segmentSize;
     
     return newState;
 }
@@ -38,14 +34,12 @@
         self.translation = ccp(0,0);
         self.rotation = 0;
         self.scale = 1;
-        self.lineColor = ccc3(255, 255, 255);
-        self.segmentSize = 1;
     }
     return self;
 }
 
 -(NSString*) description {
-    return [NSString stringWithFormat:@"<DrawState translation=%@ rotation=%f scale=%f lineColor=%d,%d,%d segmentSize=%f >", NSStringFromCGPoint(translation), rotation, scale, lineColor.r, lineColor.g, lineColor.b, segmentSize];
+    return [NSString stringWithFormat:@"<DrawState translation=%@ rotation=%f scale=%f >", NSStringFromCGPoint(translation), rotation, scale];
 }
 
 @end

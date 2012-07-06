@@ -10,6 +10,13 @@
 
 @class DrawContext;
 
+@protocol SegmentDrawer <NSObject>
+
+-(void) clear;
+-(void) segmentFrom:(CGPoint)from to:(CGPoint)to generation:(NSInteger)generation time:(NSInteger)time identifier:(NSInteger)identifier;
+
+@end
+
 @interface LSystem : NSObject {
     NSInteger _segments;
     CGFloat _duration;
@@ -24,10 +31,10 @@
 @property (nonatomic, assign) CGFloat cost;
 @property (nonatomic, retain) NSString *root;
 @property (nonatomic, retain) DrawContext *ctx;
+@property (nonatomic, retain) id<SegmentDrawer> segment;
 
 -(void) reset;
 -(void) growGeneration:(NSInteger)generation withRule:(NSString*)rule angle:(CGFloat)aAngle length:(CGFloat)length time:(CGFloat)time draw:(BOOL)draw;
--(void) segment:(CGFloat)length generation:(NSInteger)generation time:(CGFloat)time identifier:(NSInteger)identifier;
 
 /** Returns the total draw time needed based on the current cost.
  

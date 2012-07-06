@@ -13,6 +13,7 @@
 #import "DrawContext.h"
 #import "LSystem.h"
 #import "DrawState.h"
+#import "RenderTextureSegmentDrawer.h"
 
 @interface HelloWorldLayer () {
     CGFloat duration;
@@ -44,13 +45,7 @@
 -(id) init
 {
 	if( (self=[super init])) {
-		                
-        CGPoint centre = ccpMult(ccpFromSize(self.contentSize), 0.5);
-        
-        self.lsys = [[[LSystem alloc] init] autorelease];
-        lsys.ctx.position = centre;
-        [self addChild:lsys.ctx];
-                
+		                                
         NSDictionary *straight = [NSDictionary dictionaryWithObjectsAndKeys:@"FFF", @"1", nil];
         NSDictionary *bend = [NSDictionary dictionaryWithObjectsAndKeys:@"FF-1", @"1", nil];
         NSDictionary *branches = [NSDictionary dictionaryWithObjectsAndKeys:@"FF-[1]++F+F", @"1", nil];
@@ -65,9 +60,16 @@
         
         NSDictionary *crooked = [NSDictionary dictionaryWithObjectsAndKeys:@"F-F+2", @"1", @"F-[[-F-F+F+FF2]+FF2]+F[+F+F+FF2]-FF+F-F2", @"2", nil];
         
+        CGPoint centre = ccpMult(ccpFromSize(self.contentSize), 0.5);
+        
+        RenderTextureSegmentDrawer *segDrawer = [RenderTextureSegmentDrawer node];
+        [self addChild:segDrawer];
+        
+        self.lsys = [[[LSystem alloc] init] autorelease];
+        lsys.segment = segDrawer;
         lsys.rules = moreBranches;
-        lsys.segmentLength = 50;
-//        lsys.cost = 5;
+        lsys.segmentLength = 30;
+//        lsys.cost = 0.1;
         
         NSInteger generations = 6;
         
