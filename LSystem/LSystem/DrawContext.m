@@ -42,11 +42,7 @@
     
     delta = CGPointApplyAffineTransform(delta, CGAffineTransformMakeRotation(rot));
     
-    state.translation = CGPointMake(state.translation.x + delta.x, state.translation.y + delta.y);
-    
-//    delta = ccpRotateByAngle(delta, ccp(0,0), CC_DEGREES_TO_RADIANS(-state.rotation));
-//    
-//    state.translation = ccpAdd(state.translation, delta);    
+    state.translation = CGPointMake(state.translation.x + delta.x, state.translation.y + delta.y);    
 }
 
 -(void) rotate:(CGFloat)angle {
