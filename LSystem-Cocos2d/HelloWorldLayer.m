@@ -91,6 +91,8 @@
         
         CGPoint pos = ccp(centre.x, 0);
         
+        [lsys.segment clear];
+        
         [lsys draw:pos generation:6 time:time ease:-1];        
     }
 }

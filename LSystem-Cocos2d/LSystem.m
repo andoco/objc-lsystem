@@ -188,7 +188,7 @@
     }
     
     // clear existing drawing
-    [segment clear];
+//    [segment clear];
     
     [ctx push];
     [ctx translate:pos];
