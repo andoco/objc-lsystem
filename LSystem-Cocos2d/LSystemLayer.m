@@ -13,19 +13,17 @@
 #import "DrawContext.h"
 #import "LSystem.h"
 #import "DrawState.h"
+#import "LSystemNode.h"
 #import "RenderTextureSegmentDrawer.h"
 
 @interface LSystemLayer () {
-    CGFloat duration;
-    CGFloat time;
+    
 }
-@property (nonatomic, retain) LSystem *lsys;
+
 @end
 
 // LSystemLayer implementation
 @implementation LSystemLayer
-
-@synthesize lsys;
 
 +(CCScene *) scene
 {
@@ -60,47 +58,15 @@
         
         NSDictionary *crooked = [NSDictionary dictionaryWithObjectsAndKeys:@"F-F+2", @"1", @"F-[[-F-F+F+FF2]+FF2]+F[+F+F+FF2]-FF+F-F2", @"2", nil];
         
-        CGPoint centre = ccpMult(ccpFromSize(self.contentSize), 0.5);
-        
-        RenderTextureSegmentDrawer *segDrawer = [RenderTextureSegmentDrawer node];
-        [self addChild:segDrawer];
-        
-        self.lsys = [[[LSystem alloc] init] autorelease];
-        lsys.segment = segDrawer;
-        lsys.rules = moreBranches;
-        lsys.segmentLength = 30;
-//        lsys.cost = 0.1;
-        
-        NSInteger generations = 6;
-        
-        duration = [lsys duration:generations];
-        time = 0;
-        
-        CCLOG(@"lsystem duration = %f", duration);
-                
-        [self scheduleUpdate];
+        LSystemNode *lsys = [LSystemNode lsystemWithRules:moreBranches];
+        [self addChild:lsys];        
 	}
 	return self;
-}
-
--(void) update:(ccTime)dt {
-    if (time < duration) {
-        time += dt;
-        
-        CGPoint centre = ccpMult(ccpFromSize(self.contentSize), 0.5);
-        
-        CGPoint pos = ccp(centre.x, 0);
-        
-        [lsys.segment clear];
-        
-        [lsys draw:pos generation:6 time:time ease:-1];        
-    }
 }
 
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
-    [lsys release];
 	[super dealloc];
 }
 @end
