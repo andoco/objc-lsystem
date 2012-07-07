@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "cocos2d.h"
+#import <UIKit/UIKit.h>
 
 @interface DrawState : NSObject
 

@@ -123,14 +123,11 @@
 		497760CB15307B6700D9F40D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760CA15307B6700D9F40D /* AppDelegate.m */; };
 		497760CE15307B6700D9F40D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760CD15307B6700D9F40D /* RootViewController.m */; };
 		497760D115307B6700D9F40D /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760D015307B6700D9F40D /* HelloWorldLayer.m */; };
-		497760DA15307BA400D9F40D /* LSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760D915307BA400D9F40D /* LSystem.m */; };
-		497760DD153080A500D9F40D /* DrawContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760DC153080A500D9F40D /* DrawContext.m */; };
-		49D3EA2115A71FA800DA0A32 /* DrawState.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D3EA2015A71FA700DA0A32 /* DrawState.m */; };
 		49D3EA2515A745C800DA0A32 /* RenderTextureSegmentDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		495E5ED515A759E400B1DB5F /* libLSystem.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libLSystem.a; path = "build/Release-iphoneos/libLSystem.a"; sourceTree = "<group>"; };
+		495E5ED515A759E400B1DB5F /* libLSystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLSystem.a; path = "build/Release-iphoneos/libLSystem.a"; sourceTree = "<group>"; };
 		49775F6315307B6300D9F40D /* LSystem-Cocos2d.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LSystem-Cocos2d.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49775F6715307B6300D9F40D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		49775F6915307B6300D9F40D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -366,12 +363,6 @@
 		497760CF15307B6700D9F40D /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
 		497760D015307B6700D9F40D /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		497760D215307B6700D9F40D /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
-		497760D815307BA400D9F40D /* LSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystem.h; sourceTree = "<group>"; };
-		497760D915307BA400D9F40D /* LSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSystem.m; sourceTree = "<group>"; };
-		497760DB153080A500D9F40D /* DrawContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawContext.h; sourceTree = "<group>"; };
-		497760DC153080A500D9F40D /* DrawContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawContext.m; sourceTree = "<group>"; };
-		49D3EA1F15A71FA700DA0A32 /* DrawState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawState.h; sourceTree = "<group>"; };
-		49D3EA2015A71FA700DA0A32 /* DrawState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawState.m; sourceTree = "<group>"; };
 		49D3EA2315A745C800DA0A32 /* RenderTextureSegmentDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderTextureSegmentDrawer.h; sourceTree = "<group>"; };
 		49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderTextureSegmentDrawer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -442,12 +433,6 @@
 				49775F7815307B6300D9F40D /* Resources */,
 				49775F8C15307B6300D9F40D /* libs */,
 				497760C515307B6700D9F40D /* Supporting Files */,
-				497760D815307BA400D9F40D /* LSystem.h */,
-				497760D915307BA400D9F40D /* LSystem.m */,
-				497760DB153080A500D9F40D /* DrawContext.h */,
-				497760DC153080A500D9F40D /* DrawContext.m */,
-				49D3EA1F15A71FA700DA0A32 /* DrawState.h */,
-				49D3EA2015A71FA700DA0A32 /* DrawState.m */,
 				49D3EA2315A745C800DA0A32 /* RenderTextureSegmentDrawer.h */,
 				49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */,
 			);
@@ -949,9 +934,6 @@
 				497760CB15307B6700D9F40D /* AppDelegate.m in Sources */,
 				497760CE15307B6700D9F40D /* RootViewController.m in Sources */,
 				497760D115307B6700D9F40D /* HelloWorldLayer.m in Sources */,
-				497760DA15307BA400D9F40D /* LSystem.m in Sources */,
-				497760DD153080A500D9F40D /* DrawContext.m in Sources */,
-				49D3EA2115A71FA800DA0A32 /* DrawState.m in Sources */,
 				49D3EA2515A745C800DA0A32 /* RenderTextureSegmentDrawer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -974,8 +956,10 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../LSystem/LSystem;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "../LSystem/LSystem/**";
 			};
 			name = Debug;
 		};
@@ -989,9 +973,11 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ../LSystem/LSystem;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "../LSystem/LSystem/**";
 			};
 			name = Release;
 		};

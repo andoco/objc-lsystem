@@ -6,7 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "cocos2d.h"
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @class DrawState;
 
@@ -14,7 +15,7 @@
  Coordinate system uses degrees for rotation with 0 degrees point vertically up on the y-axis.
  Positive rotation moves clockwise around the current translation.
  */
-@interface DrawContext : CCNode
+@interface DrawContext : NSObject
 
 @property (nonatomic, readonly) DrawState *currentState;
 

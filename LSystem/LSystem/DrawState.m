@@ -31,7 +31,7 @@
 
 -(id) init {
     if ((self = [super init])) {
-        self.translation = ccp(0,0);
+        self.translation = CGPointMake(0, 0);
         self.rotation = 0;
         self.scale = 1;
     }

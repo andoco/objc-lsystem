@@ -38,9 +38,15 @@
 -(void) translate:(CGPoint)delta {    
     DrawState *state = self.currentState;
     
-    delta = ccpRotateByAngle(delta, ccp(0,0), CC_DEGREES_TO_RADIANS(-state.rotation));
+    CGFloat rot = -state.rotation * M_PI / 180;
     
-    state.translation = ccpAdd(state.translation, delta);    
+    delta = CGPointApplyAffineTransform(delta, CGAffineTransformMakeRotation(rot));
+    
+    state.translation = CGPointMake(state.translation.x + delta.x, state.translation.y + delta.y);
+    
+//    delta = ccpRotateByAngle(delta, ccp(0,0), CC_DEGREES_TO_RADIANS(-state.rotation));
+//    
+//    state.translation = ccpAdd(state.translation, delta);    
 }
 
 -(void) rotate:(CGFloat)angle {
