@@ -46,6 +46,8 @@
         self.lsys = [[[LSystem alloc] init] autorelease];
         lsys.segment = segDrawer;
         lsys.rules = rules;
+        lsys.segmentLength = 30;
+        lsys.cost = 0.1;
         
         generation = 6;
         

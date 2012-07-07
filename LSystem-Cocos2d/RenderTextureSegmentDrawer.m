@@ -37,9 +37,11 @@
 
 -(void) segmentFrom:(CGPoint)from to:(CGPoint)to generation:(NSInteger)generation time:(NSInteger)time identifier:(NSInteger)identifier {
     [rt begin];
-    glColor4f(1.0/(generation + 1), 0.3, 0.3, 1);
+    
+    glColor4f(0, 1.0 / (generation + 1), 0, 1);    
     glLineWidth(1 + generation * 2);
     ccDrawLine(from, to);
+    
     [rt end];
 }
 
