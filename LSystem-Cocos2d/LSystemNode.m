@@ -23,6 +23,8 @@
 
 @implementation LSystemNode
 
+@synthesize generation;
+
 @synthesize lsys;
 
 +(id) lsystemWithRules:(NSDictionary*)rules {
@@ -45,10 +47,10 @@
         lsys.segment = segDrawer;
         lsys.rules = rules;
         
-        NSInteger generations = 6;
+        generation = 6;
         
         // find duration required for drawing l-system
-        duration = [lsys duration:generations];
+        duration = [lsys duration:generation];
         time = 0;
         
         [self scheduleUpdate];
@@ -68,7 +70,7 @@
         
         [lsys.segment clear];
         
-        [lsys draw:pos generation:6 time:time ease:-1];        
+        [lsys draw:pos generation:generation time:time ease:-1];        
     }
 }
 

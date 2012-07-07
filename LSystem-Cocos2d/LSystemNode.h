@@ -13,6 +13,8 @@
     
 }
 
+@property (nonatomic, assign) NSInteger generation;
+
 +(id) lsystemWithRules:(NSDictionary*)rules;
 -(id) initWithRules:(NSDictionary*)rules;
 
