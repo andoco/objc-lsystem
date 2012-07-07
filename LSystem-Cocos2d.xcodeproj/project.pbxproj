@@ -122,7 +122,7 @@
 		497760C815307B6700D9F40D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760C715307B6700D9F40D /* main.m */; };
 		497760CB15307B6700D9F40D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760CA15307B6700D9F40D /* AppDelegate.m */; };
 		497760CE15307B6700D9F40D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760CD15307B6700D9F40D /* RootViewController.m */; };
-		497760D115307B6700D9F40D /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760D015307B6700D9F40D /* HelloWorldLayer.m */; };
+		497760D115307B6700D9F40D /* LSystemLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760D015307B6700D9F40D /* LSystemLayer.m */; };
 		49D3EA2515A745C800DA0A32 /* RenderTextureSegmentDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */; };
 /* End PBXBuildFile section */
 
@@ -360,8 +360,8 @@
 		497760CA15307B6700D9F40D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		497760CC15307B6700D9F40D /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		497760CD15307B6700D9F40D /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		497760CF15307B6700D9F40D /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		497760D015307B6700D9F40D /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
+		497760CF15307B6700D9F40D /* LSystemLayer.h */ = {isa = PBXFileReference; path = LSystemLayer.h; sourceTree = "<group>"; };
+		497760D015307B6700D9F40D /* LSystemLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSystemLayer.m; sourceTree = "<group>"; };
 		497760D215307B6700D9F40D /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		49D3EA2315A745C800DA0A32 /* RenderTextureSegmentDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderTextureSegmentDrawer.h; sourceTree = "<group>"; };
 		49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderTextureSegmentDrawer.m; sourceTree = "<group>"; };
@@ -427,8 +427,8 @@
 				497760CA15307B6700D9F40D /* AppDelegate.m */,
 				497760CC15307B6700D9F40D /* RootViewController.h */,
 				497760CD15307B6700D9F40D /* RootViewController.m */,
-				497760CF15307B6700D9F40D /* HelloWorldLayer.h */,
-				497760D015307B6700D9F40D /* HelloWorldLayer.m */,
+				497760CF15307B6700D9F40D /* LSystemLayer.h */,
+				497760D015307B6700D9F40D /* LSystemLayer.m */,
 				497760D215307B6700D9F40D /* GameConfig.h */,
 				49775F7815307B6300D9F40D /* Resources */,
 				49775F8C15307B6300D9F40D /* libs */,
@@ -933,7 +933,7 @@
 				497760C815307B6700D9F40D /* main.m in Sources */,
 				497760CB15307B6700D9F40D /* AppDelegate.m in Sources */,
 				497760CE15307B6700D9F40D /* RootViewController.m in Sources */,
-				497760D115307B6700D9F40D /* HelloWorldLayer.m in Sources */,
+				497760D115307B6700D9F40D /* LSystemLayer.m in Sources */,
 				49D3EA2515A745C800DA0A32 /* RenderTextureSegmentDrawer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
