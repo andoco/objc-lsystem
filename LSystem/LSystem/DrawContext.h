@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class DrawState;
+#import "DrawState.h"
 
 /**
  Coordinate system uses degrees for rotation with 0 degrees point vertically up on the y-axis.

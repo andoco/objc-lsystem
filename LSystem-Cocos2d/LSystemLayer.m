@@ -14,7 +14,6 @@
 #import "LSystem.h"
 #import "DrawState.h"
 #import "LSystemNode.h"
-#import "RenderTextureSegmentDrawer.h"
 
 @interface LSystemLayer () {
     
@@ -82,6 +81,8 @@
     
     NSDictionary *crooked = [NSDictionary dictionaryWithObjectsAndKeys:@"F-F+2", @"1", @"F-[[-F-F+F+FF2]+FF2]+F[+F+F+FF2]-FF+F-F2", @"2", nil];
     
+    NSDictionary *branchesWithLeaves = [NSDictionary dictionaryWithObjectsAndKeys:@"FF-[1]++F+FL", @"1", nil];
+    
     
     NSDictionary *rules = [NSDictionary dictionaryWithObjectsAndKeys:
                            straight, @"Straight", 
@@ -91,6 +92,7 @@
                            elaborate, @"Elaborate",
                            gnarled, @"Gnarled",
                            crooked, @"Crooked",
+                           branchesWithLeaves, @"Branches with Leaves",
                            nil];
 
     return rules;

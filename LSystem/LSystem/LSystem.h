@@ -10,11 +10,18 @@
 #import <UIKit/UIKit.h>
 
 @class DrawContext;
+@class LSystem;
 
 @protocol SegmentDrawer <NSObject>
 
 -(void) clear;
 -(void) segmentFrom:(CGPoint)from to:(CGPoint)to generation:(NSInteger)generation time:(NSInteger)time identifier:(NSInteger)identifier;
+
+@end
+
+@protocol LSysCommand <NSObject>
+
+-(void) runCommandForSystem:(LSystem*)system generation:(NSInteger)generation rule:(NSString*)rule angle:(CGFloat)angle length:(CGFloat)length time:(CGFloat)time;
 
 @end
 
@@ -28,6 +35,7 @@
 @property (nonatomic, assign) CGFloat segmentLength;
 @property (nonatomic, assign) CGFloat threshold;
 @property (nonatomic, retain) NSDictionary *rules;
+@property (nonatomic, retain) NSDictionary *commands;
 @property (nonatomic, assign) CGFloat decrease;
 @property (nonatomic, assign) CGFloat cost;
 @property (nonatomic, retain) NSString *root;

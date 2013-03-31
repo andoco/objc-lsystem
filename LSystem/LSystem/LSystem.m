@@ -62,6 +62,15 @@
         _duration = 1 + (LSYS_DURATION_MAX - time);
         return;
     }
+
+    // Custom command symbols:
+    // If the rule is a key in the LSsytem.commands dictionary,
+    // execute its value which is a function taking 6 parameters:
+    // lsystem, generation, rule, angle, length and time.
+    id<LSysCommand> cmd = [self.commands objectForKey:rule];
+    if (cmd) {
+        [cmd runCommandForSystem:self generation:generation rule:rule angle:aAngle length:length time:time];
+    }
     
     // draw
     if (draw) {

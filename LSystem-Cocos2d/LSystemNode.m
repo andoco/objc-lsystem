@@ -8,6 +8,7 @@
 
 #import "LSystemNode.h"
 
+#import "LeafDrawCommand.h"
 #import "LSystem.h"
 #import "RenderTextureSegmentDrawer.h"
 
@@ -39,10 +40,14 @@
         CGSize size = [[CCDirector sharedDirector] winSize];
         CGPoint centre = ccpMult(ccpFromSize(size), 0.5);
         pos = ccp(centre.x, 0);
+        
+        CCRenderTexture *rt = [CCRenderTexture renderTextureWithWidth:size.width height:size.height];
+        rt.position = centre;
+        [self addChild:rt];
 
         // render segments to a CCRenderTexture
         RenderTextureSegmentDrawer *segDrawer = [RenderTextureSegmentDrawer node];
-        [self addChild:segDrawer];
+        segDrawer.rt = rt;
         
         // create LSystem
         self.lsys = [[[LSystem alloc] init] autorelease];
@@ -50,6 +55,10 @@
         lsys.rules = rules;
         lsys.segmentLength = 30;
         lsys.cost = 0.1;
+        
+        LeafDrawCommand *leafCommand = [[LeafDrawCommand alloc] init];
+        leafCommand.rt = rt;
+        lsys.commands = [NSDictionary dictionaryWithObjectsAndKeys:leafCommand, @"L", nil];
         
         generation = 6;
         

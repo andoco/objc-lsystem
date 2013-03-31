@@ -8,8 +8,6 @@
 
 #import "DrawContext.h"
 
-#import "DrawState.h"
-
 @interface DrawContext ()
 @property (nonatomic, retain) NSMutableArray *states;
 @end
