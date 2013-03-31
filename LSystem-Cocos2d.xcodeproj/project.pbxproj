@@ -125,6 +125,9 @@
 		497760D115307B6700D9F40D /* LSystemLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760D015307B6700D9F40D /* LSystemLayer.m */; };
 		49C549D515A8D42F00278B94 /* LSystemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C549D415A8D42E00278B94 /* LSystemNode.m */; };
 		49D3EA2515A745C800DA0A32 /* RenderTextureSegmentDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */; };
+		49FD01B7170849F900B75B30 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49FD01B4170849F900B75B30 /* Default-568h@2x.png */; };
+		49FD01B8170849F900B75B30 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 49FD01B5170849F900B75B30 /* Default-Landscape~ipad.png */; };
+		49FD01B9170849F900B75B30 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49FD01B6170849F900B75B30 /* Default@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -368,6 +371,9 @@
 		49C549D415A8D42E00278B94 /* LSystemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSystemNode.m; sourceTree = "<group>"; };
 		49D3EA2315A745C800DA0A32 /* RenderTextureSegmentDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderTextureSegmentDrawer.h; sourceTree = "<group>"; };
 		49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderTextureSegmentDrawer.m; sourceTree = "<group>"; };
+		49FD01B4170849F900B75B30 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
+		49FD01B5170849F900B75B30 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		49FD01B6170849F900B75B30 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,6 +453,9 @@
 		49775F7815307B6300D9F40D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				49FD01B4170849F900B75B30 /* Default-568h@2x.png */,
+				49FD01B5170849F900B75B30 /* Default-Landscape~ipad.png */,
+				49FD01B6170849F900B75B30 /* Default@2x.png */,
 				49775F7915307B6300D9F40D /* Default.png */,
 				49775F7B15307B6300D9F40D /* fps_images.png */,
 				49775F7D15307B6300D9F40D /* Icon-72.png */,
@@ -831,6 +840,9 @@
 				49775F8615307B6300D9F40D /* Icon.png in Resources */,
 				49775F8815307B6300D9F40D /* Icon@2x.png in Resources */,
 				49775F8B15307B6300D9F40D /* iTunesArtwork in Resources */,
+				49FD01B7170849F900B75B30 /* Default-568h@2x.png in Resources */,
+				49FD01B8170849F900B75B30 /* Default-Landscape~ipad.png in Resources */,
+				49FD01B9170849F900B75B30 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -998,9 +1010,10 @@
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "LSystem-Cocos2d/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "LSystem-Cocos2d";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1015,9 +1028,10 @@
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "LSystem-Cocos2d/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "LSystem-Cocos2d";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
