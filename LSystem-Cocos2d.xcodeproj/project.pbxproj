@@ -147,6 +147,7 @@
 		49FD04F61708879C00B75B30 /* LICENSE_cocos2d.txt in Resources */ = {isa = PBXBuildFile; fileRef = 49FD04851708879C00B75B30 /* LICENSE_cocos2d.txt */; };
 		49FD04F71708879C00B75B30 /* LICENSE_CocosDenshion.txt in Resources */ = {isa = PBXBuildFile; fileRef = 49FD04861708879C00B75B30 /* LICENSE_CocosDenshion.txt */; };
 		49FD04F81708879C00B75B30 /* LICENSE_Kazmath.txt in Resources */ = {isa = PBXBuildFile; fileRef = 49FD04871708879C00B75B30 /* LICENSE_Kazmath.txt */; };
+		49FD05011708C34F00B75B30 /* Rules.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FD05001708C34E00B75B30 /* Rules.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -433,6 +434,7 @@
 		49FD04851708879C00B75B30 /* LICENSE_cocos2d.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_cocos2d.txt; sourceTree = "<group>"; };
 		49FD04861708879C00B75B30 /* LICENSE_CocosDenshion.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_CocosDenshion.txt; sourceTree = "<group>"; };
 		49FD04871708879C00B75B30 /* LICENSE_Kazmath.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_Kazmath.txt; sourceTree = "<group>"; };
+		49FD05001708C34E00B75B30 /* Rules.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Rules.plist; path = Resources/Rules.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -522,6 +524,7 @@
 				49775F8715307B6300D9F40D /* Icon@2x.png */,
 				49775F8915307B6300D9F40D /* Info.plist */,
 				49775F8A15307B6300D9F40D /* iTunesArtwork */,
+				49FD05001708C34E00B75B30 /* Rules.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -972,6 +975,7 @@
 				49FD04F61708879C00B75B30 /* LICENSE_cocos2d.txt in Resources */,
 				49FD04F71708879C00B75B30 /* LICENSE_CocosDenshion.txt in Resources */,
 				49FD04F81708879C00B75B30 /* LICENSE_Kazmath.txt in Resources */,
+				49FD05011708C34F00B75B30 /* Rules.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,6 @@
 #import "DrawState.h"
 #import "LSystemNode.h"
 
-// LSystemLayer implementation
 @implementation LSystemLayer {
     CCMenu *menu_;
     LSystemNode *lsystem_;
@@ -23,16 +22,10 @@
 
 +(CCScene *) scene
 {
-	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
-	
-	// 'layer' is an autorelease object.
 	LSystemLayer *layer = [LSystemLayer node];
-	
-	// add layer as a child to scene
 	[scene addChild: layer];
-	
-	// return the scene
+    
 	return scene;
 }
 
@@ -40,7 +33,6 @@
 {
 	if( (self=[super init])) {
         [self setTouchEnabled:YES];
-        
         [self showMenu];
 	}
 	return self;
@@ -50,53 +42,18 @@
     [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
 
-// on "dealloc" you need to release all your retained objects
-
--(NSDictionary*) systemRules {
-    NSDictionary *straight = [NSDictionary dictionaryWithObjectsAndKeys:@"FFF", @"1", nil];
-    NSDictionary *bend = [NSDictionary dictionaryWithObjectsAndKeys:@"FF-1", @"1", nil];
-    NSDictionary *branches = [NSDictionary dictionaryWithObjectsAndKeys:@"FF-[1]++F+F", @"1", nil];
-    NSDictionary *moreBranches = [NSDictionary dictionaryWithObjectsAndKeys:@"FF-[1]++F+F+1", @"1", nil];
-    NSDictionary *elaborate = [NSDictionary dictionaryWithObjectsAndKeys:@"FF[-2]3[+3]", @"1", @"FF+F-F-F[FFF3][+3]-F-F3", @"2", @"FF-F+F+F[2][-2]+F+F2", @"3", nil];
-    
-    NSDictionary *gnarled = [NSDictionary dictionaryWithObjectsAndKeys:
-                             @"FF[++FF[2][+FF2]][-FF3]", @"1",
-                             @"F-F-F+[2]F+F+F+F+>[2]", @"2",
-                             @"F+F+F-[2]F-F-F-F->[2]", @"3",
-                             nil];
-    
-    NSDictionary *crooked = [NSDictionary dictionaryWithObjectsAndKeys:@"F-F+2", @"1", @"F-[[-F-F+F+FF2]+FF2]+F[+F+F+FF2]-FF+F-F2", @"2", nil];
-    
-    NSDictionary *branchesWithLeaves = [NSDictionary dictionaryWithObjectsAndKeys:@"FF-[1]++F+FL", @"1", nil];
-    
-    NSDictionary *mytree = [NSDictionary dictionaryWithObjectsAndKeys:@"F[[<--1][<<++1]]FFL", @"1", nil];
-    
-    NSDictionary *rules = [NSDictionary dictionaryWithObjectsAndKeys:
-                           straight, @"Straight", 
-                           bend, @"Bend",
-                           branches, @"Branches",
-                           moreBranches, @"More Branches",
-                           elaborate, @"Elaborate",
-                           gnarled, @"Gnarled",
-                           crooked, @"Crooked",
-                           branchesWithLeaves, @"Branches with Leaves",
-                           mytree, @"My Tree",
-                           nil];
-
-    return rules;
-}
-
 -(void) showMenu {
     if (!menu_) {
         menu_ = [CCMenu menuWithItems:nil];
         
-        NSDictionary *sysRules = [self systemRules];
-        
-        for (NSString *ruleKey in sysRules.allKeys) {
+        NSURL *url = [[NSBundle mainBundle] URLForResource:@"Rules" withExtension:@"plist"];
+        NSDictionary *ruleConfigs = [NSDictionary dictionaryWithContentsOfURL:url];
+
+        for (NSString *ruleKey in ruleConfigs.allKeys) {
             CCMenuItemFont *item = [CCMenuItemFont itemWithString:ruleKey block:^(id sender) {
-                NSDictionary *rules = [sysRules objectForKey:ruleKey];
+                NSDictionary *ruleConfig = [ruleConfigs objectForKey:ruleKey];
                 menu_.visible = NO;
-                [self showLSystemWithRules:rules];
+                [self showLSystemWithRuleConfig:ruleConfig];
             }];
             [menu_ addChild:item];
         }
@@ -109,12 +66,18 @@
     menu_.visible = YES;
 }
 
--(void) showLSystemWithRules:(NSDictionary*)rules {
+-(void) showLSystemWithRuleConfig:(NSDictionary*)ruleConfig {
     // remove current lsystem
     [lsystem_ removeFromParentAndCleanup:YES];
     
+    NSDictionary *rules = [ruleConfig objectForKey:@"Rules"];
+    
     lsystem_ = [LSystemNode lsystemWithRules:rules];
+    lsystem_.generation = [[ruleConfig objectForKey:@"Generations"] integerValue];
+    
     [self addChild:lsystem_];
+    
+    [lsystem_ start];
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {

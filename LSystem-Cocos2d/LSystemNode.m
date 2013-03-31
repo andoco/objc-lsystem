@@ -19,6 +19,7 @@
     CGFloat time_;
     LSystem *lsys_;
     CCRenderTexture *rt_;
+    BOOL started_;
 }
 
 +(id) lsystemWithRules:(NSDictionary*)rules {
@@ -28,6 +29,8 @@
 -(id) initWithRules:(NSDictionary*)rules {
     if ((self = [super init])) {
         CCLOG(@"Drawing with rules %@", rules);
+        
+        self.generation = 6;
         
         // find center bottom of screen
         CGSize size = [[CCDirector sharedDirector] winSize];
@@ -52,21 +55,23 @@
         LeafDrawCommand *leafCommand = [[LeafDrawCommand alloc] init];
         leafCommand.rt = rt_;
         lsys_.commands = [NSDictionary dictionaryWithObjectsAndKeys:leafCommand, @"L", nil];
-        
-        self.generation = 2;
-        
-        // find duration required for drawing l-system
-        duration_ = [lsys_ duration:self.generation];
-        CCLOG(@"Drawing with duration %f", duration_);
-        time_ = 0;
-        
-        [self scheduleUpdate];
     }
     return self;
 }
 
+-(void) start {
+    // find duration required for drawing l-system
+    duration_ = [lsys_ duration:self.generation];
+    CCLOG(@"Drawing %d generations with duration %f", self.generation, duration_);
+    time_ = 0;
+    started_ = YES;
+    
+    [self scheduleUpdate];
+}
 
 -(void) update:(ccTime)dt {
+    NSAssert(started_, @"LSystemNode not started");
+    
     // animate drawing of l-system
     if (time_ < duration_) {
         time_ += dt;

@@ -17,5 +17,6 @@
 
 +(id) lsystemWithRules:(NSDictionary*)rules;
 -(id) initWithRules:(NSDictionary*)rules;
+-(void) start;
 
 @end
