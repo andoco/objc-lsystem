@@ -48,8 +48,10 @@
         
         NSURL *url = [[NSBundle mainBundle] URLForResource:@"Rules" withExtension:@"plist"];
         NSDictionary *ruleConfigs = [NSDictionary dictionaryWithContentsOfURL:url];
+        
+        NSArray *sortedKeys = [ruleConfigs.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 
-        for (NSString *ruleKey in ruleConfigs.allKeys) {
+        for (NSString *ruleKey in sortedKeys) {
             CCMenuItemFont *item = [CCMenuItemFont itemWithString:ruleKey block:^(id sender) {
                 NSDictionary *ruleConfig = [ruleConfigs objectForKey:ruleKey];
                 menu_.visible = NO;
