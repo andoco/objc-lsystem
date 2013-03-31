@@ -53,7 +53,7 @@
         self.lsys = [[[LSystem alloc] init] autorelease];
         lsys.segment = segDrawer;
         lsys.rules = rules;
-        lsys.segmentLength = 30;
+        lsys.segmentLength = size.height / 10;
         lsys.cost = 0.1;
         
         LeafDrawCommand *leafCommand = [[LeafDrawCommand alloc] init];

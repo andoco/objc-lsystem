@@ -22,7 +22,7 @@
 -(void) segmentFrom:(CGPoint)from to:(CGPoint)to generation:(NSInteger)generation time:(NSInteger)time identifier:(NSInteger)identifier {
     [_rt begin];
     
-    ccDrawColor4F(0, 1.0 / (generation + 1), 0, 1);
+    ccDrawColor4F(0, 0.2 + (1.0 / (generation + 1) * 0.8), 0, 1);
     glLineWidth((1 + generation * 2) * CC_CONTENT_SCALE_FACTOR());
     ccDrawLine(from, to);
     
