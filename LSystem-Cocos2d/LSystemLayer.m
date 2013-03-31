@@ -48,7 +48,7 @@
 -(id) init
 {
 	if( (self=[super init])) {
-        self.isTouchEnabled = YES;
+        [self setTouchEnabled:YES];
         
         [self showMenu];
 	}
@@ -56,7 +56,7 @@
 }
 
 -(void) registerWithTouchDispatcher {
-    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+    [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
 
 // on "dealloc" you need to release all your retained objects
@@ -105,7 +105,7 @@
         NSDictionary *sysRules = [self systemRules];
         
         for (NSString *ruleKey in sysRules.allKeys) {
-            CCMenuItemFont *item = [CCMenuItemFont itemFromString:ruleKey block:^(id sender) {
+            CCMenuItemFont *item = [CCMenuItemFont itemWithString:ruleKey block:^(id sender) {
                 NSDictionary *rules = [sysRules objectForKey:ruleKey];
                 menu.visible = NO;
                 [self showLSystemWithRules:rules];
