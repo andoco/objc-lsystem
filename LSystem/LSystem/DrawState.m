@@ -15,13 +15,13 @@
 @synthesize scale;
 
 +(id) state {
-    DrawState *newState = [[[DrawState alloc] init] autorelease];
+    DrawState *newState = [[DrawState alloc] init];
     
     return newState;
 }
 
 +(id) stateWithState:(DrawState*)state {
-    DrawState *newState = [[[DrawState alloc] init] autorelease];
+    DrawState *newState = [[DrawState alloc] init];
     newState.translation = state.translation;
     newState.rotation = state.rotation;
     newState.scale = state.scale;

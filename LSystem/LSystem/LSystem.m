@@ -36,17 +36,11 @@
         
         self.rules = [NSDictionary dictionaryWithObjectsAndKeys:@"FF-1", @"1", nil];
         
-        self.ctx = [[[DrawContext alloc] init] autorelease];
+        self.ctx = [[DrawContext alloc] init];
     }
     return self;
 }
 
--(void) dealloc {
-    [rules release];
-    [ctx release];
-    [segment release];
-    [super dealloc];
-}
 
 -(void) reset {
     _segments = 0;

@@ -34,13 +34,13 @@
 @property (nonatomic, assign) CGFloat angle;
 @property (nonatomic, assign) CGFloat segmentLength;
 @property (nonatomic, assign) CGFloat threshold;
-@property (nonatomic, retain) NSDictionary *rules;
-@property (nonatomic, retain) NSDictionary *commands;
+@property (nonatomic, strong) NSDictionary *rules;
+@property (nonatomic, strong) NSDictionary *commands;
 @property (nonatomic, assign) CGFloat decrease;
 @property (nonatomic, assign) CGFloat cost;
-@property (nonatomic, retain) NSString *root;
-@property (nonatomic, retain) DrawContext *ctx;
-@property (nonatomic, retain) id<SegmentDrawer> segment;
+@property (nonatomic, strong) NSString *root;
+@property (nonatomic, strong) DrawContext *ctx;
+@property (nonatomic, strong) id<SegmentDrawer> segment;
 
 -(void) reset;
 -(void) growGeneration:(NSInteger)generation withRule:(NSString*)rule angle:(CGFloat)aAngle length:(CGFloat)length time:(CGFloat)time draw:(BOOL)draw;

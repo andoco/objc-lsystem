@@ -8,29 +8,20 @@
 
 #import "DrawContext.h"
 
-@interface DrawContext ()
-@property (nonatomic, retain) NSMutableArray *states;
-@end
-
-@implementation DrawContext
-
-@synthesize states;
-@synthesize currentState;
+@implementation DrawContext {
+    NSMutableArray *states_;
+}
 
 -(id) init {
     if ((self = [super init])) {
-        self.states = [NSMutableArray arrayWithObject:[DrawState state]];        
+        states_ = [NSMutableArray arrayWithObject:[DrawState state]];
     }
     return self;
 }
 
--(void) dealloc {
-    [states release];
-    [super dealloc];
-}
 
 -(DrawState*) currentState {
-    return [states lastObject];
+    return [states_ lastObject];
 }
 
 -(void) translate:(CGPoint)delta {    
@@ -52,11 +43,11 @@
 }
 
 -(void) push {
-    [states addObject:[DrawState stateWithState:self.currentState]];
+    [states_ addObject:[DrawState stateWithState:self.currentState]];
 }
 
 -(void) pop {
-    [states removeLastObject];
+    [states_ removeLastObject];
 }
 
 @end

@@ -333,6 +333,7 @@
 		49D3EA6015A7562800DA0A32 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/LSystem.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LSystem/LSystem/LSystem-Prefix.pch";
@@ -345,6 +346,7 @@
 		49D3EA6115A7562800DA0A32 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/LSystem.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LSystem/LSystem/LSystem-Prefix.pch";
