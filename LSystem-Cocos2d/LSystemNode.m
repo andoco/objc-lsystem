@@ -33,6 +33,8 @@
 
 -(id) initWithRules:(NSDictionary*)rules {
     if ((self = [super init])) {
+        CCLOG(@"Drawing with rules %@", rules);
+        
         // find center bottom of screen
         CGSize size = [[CCDirector sharedDirector] winSize];
         CGPoint centre = ccpMult(ccpFromSize(size), 0.5);
@@ -53,6 +55,7 @@
         
         // find duration required for drawing l-system
         duration = [lsys duration:generation];
+        CCLOG(@"Drawing with duration %f", duration);
         time = 0;
         
         [self scheduleUpdate];

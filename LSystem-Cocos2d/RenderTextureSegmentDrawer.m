@@ -42,6 +42,10 @@
     glLineWidth(1 + generation * 2);
     ccDrawLine(from, to);
     
+    glColor4f(1, 1, 1, 1);
+    glPointSize(2 * CC_CONTENT_SCALE_FACTOR());
+    ccDrawPoint(to);
+        
     [rt end];
 }
 
