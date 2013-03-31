@@ -24,7 +24,7 @@
     [_rt begin];
     
     float width = self.baseWidth + (self.baseWidth * generation * self.widthScaleFactor);
-    CCLOG(@"generation %d = %f wide", generation, width);
+//    CCLOG(@"generation %d = %f wide", generation, width);
     
     ccDrawColor4F(0, 0.2 + (1.0 / (generation + 1) * 0.8), 0, 1);
     glLineWidth(width * CC_CONTENT_SCALE_FACTOR());
