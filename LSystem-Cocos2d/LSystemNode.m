@@ -1,11 +1,3 @@
-//
-//  LSystemNode.m
-//  LSystem-Cocos2d
-//
-//  Created by Andrew O'Connor on 07/07/2012.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "LSystemNode.h"
 
 #import "LeafDrawCommand.h"

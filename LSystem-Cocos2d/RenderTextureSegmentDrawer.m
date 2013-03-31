@@ -1,11 +1,3 @@
-//
-//  RenderTextureSegmentDrawer.m
-//  LSystem
-//
-//  Created by Andrew O'Connor on 06/07/2012.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "RenderTextureSegmentDrawer.h"
 
 @implementation RenderTextureSegmentDrawer

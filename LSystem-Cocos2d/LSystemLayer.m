@@ -1,13 +1,3 @@
-//
-//  LSystemLayer.m
-//  LSystem
-//
-//  Created by Andrew O'Connor on 07/04/2012.
-//  Copyright __MyCompanyName__ 2012. All rights reserved.
-//
-
-
-// Import the interfaces
 #import "LSystemLayer.h"
 
 #import "DrawContext.h"

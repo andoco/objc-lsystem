@@ -1,11 +1,3 @@
-//
-//  LeafDrawCommand.m
-//  LSystem-Cocos2d
-//
-//  Created by Andrew O'Connor on 31/03/2013.
-//
-//
-
 #import "LeafDrawCommand.h"
 
 #import "DrawContext.h"

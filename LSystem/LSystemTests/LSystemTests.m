@@ -1,11 +1,3 @@
-//
-//  LSystemTests.m
-//  LSystemTests
-//
-//  Created by Andrew O'Connor on 06/07/2012.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "LSystemTests.h"
 
 @implementation LSystemTests
