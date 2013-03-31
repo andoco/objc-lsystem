@@ -18,6 +18,7 @@
     CGFloat duration_;
     CGFloat time_;
     LSystem *lsys_;
+    CCRenderTexture *rt_;
 }
 
 +(id) lsystemWithRules:(NSDictionary*)rules {
@@ -33,13 +34,13 @@
         CGPoint centre = ccpMult(ccpFromSize(size), 0.5);
         pos_ = ccp(centre.x, 0);
         
-        CCRenderTexture *rt = [CCRenderTexture renderTextureWithWidth:size.width height:size.height];
-        rt.position = centre;
-        [self addChild:rt];
+        rt_ = [CCRenderTexture renderTextureWithWidth:size.width height:size.height];
+        rt_.position = centre;
+        [self addChild:rt_];
 
         // render segments to a CCRenderTexture
         RenderTextureSegmentDrawer *segDrawer = [[RenderTextureSegmentDrawer alloc] init];
-        segDrawer.rt = rt;
+        segDrawer.rt = rt_;
         
         // create LSystem
         lsys_ = [[LSystem alloc] init];
@@ -49,7 +50,7 @@
         lsys_.cost = 0.1;
         
         LeafDrawCommand *leafCommand = [[LeafDrawCommand alloc] init];
-        leafCommand.rt = rt;
+        leafCommand.rt = rt_;
         lsys_.commands = [NSDictionary dictionaryWithObjectsAndKeys:leafCommand, @"L", nil];
         
         self.generation = 6;
@@ -70,7 +71,7 @@
     if (time_ < duration_) {
         time_ += dt;
         
-        [lsys_.segment clear];
+        [rt_ clear:0 g:0 b:0 a:1];
         
         [lsys_ draw:pos_ generation:self.generation time:time_ ease:-1];
     }

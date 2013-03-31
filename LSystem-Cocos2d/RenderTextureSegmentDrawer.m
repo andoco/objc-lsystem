@@ -10,11 +10,6 @@
 
 @implementation RenderTextureSegmentDrawer
 
-
--(void) clear {
-    [_rt clear:0 g:0 b:0 a:255];
-}
-
 -(void) segmentFrom:(CGPoint)from to:(CGPoint)to generation:(NSInteger)generation time:(NSInteger)time identifier:(NSInteger)identifier {
     [_rt begin];
     

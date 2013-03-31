@@ -14,7 +14,6 @@
 
 @protocol SegmentDrawer <NSObject>
 
--(void) clear;
 -(void) segmentFrom:(CGPoint)from to:(CGPoint)to generation:(NSInteger)generation time:(NSInteger)time identifier:(NSInteger)identifier;
 
 @end
