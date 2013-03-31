@@ -16,5 +16,7 @@
 }
 
 @property (nonatomic, strong) CCRenderTexture *rt;
+@property (nonatomic, assign) CGFloat baseWidth;
+@property (nonatomic, assign) CGFloat widthScaleFactor;
 
 @end

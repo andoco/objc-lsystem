@@ -53,7 +53,7 @@
         leafCommand.rt = rt_;
         lsys_.commands = [NSDictionary dictionaryWithObjectsAndKeys:leafCommand, @"L", nil];
         
-        self.generation = 6;
+        self.generation = 2;
         
         // find duration required for drawing l-system
         duration_ = [lsys_ duration:self.generation];

@@ -69,6 +69,7 @@
     
     NSDictionary *branchesWithLeaves = [NSDictionary dictionaryWithObjectsAndKeys:@"FF-[1]++F+FL", @"1", nil];
     
+    NSDictionary *mytree = [NSDictionary dictionaryWithObjectsAndKeys:@"F[[<--1][<<++1]]FFL", @"1", nil];
     
     NSDictionary *rules = [NSDictionary dictionaryWithObjectsAndKeys:
                            straight, @"Straight", 
@@ -79,6 +80,7 @@
                            gnarled, @"Gnarled",
                            crooked, @"Crooked",
                            branchesWithLeaves, @"Branches with Leaves",
+                           mytree, @"My Tree",
                            nil];
 
     return rules;
