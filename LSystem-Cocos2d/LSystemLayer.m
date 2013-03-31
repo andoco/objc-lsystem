@@ -15,20 +15,11 @@
 #import "DrawState.h"
 #import "LSystemNode.h"
 
-@interface LSystemLayer () {
-    
-}
-
-@property (nonatomic, strong) CCMenu *menu;
-@property (nonatomic, strong) LSystemNode *lsystem;
-
-@end
-
 // LSystemLayer implementation
-@implementation LSystemLayer
-
-@synthesize menu;
-@synthesize lsystem;
+@implementation LSystemLayer {
+    CCMenu *menu_;
+    LSystemNode *lsystem_;
+}
 
 +(CCScene *) scene
 {
@@ -94,34 +85,34 @@
 }
 
 -(void) showMenu {
-    if (!menu) {
-        self.menu = [CCMenu menuWithItems:nil];
+    if (!menu_) {
+        menu_ = [CCMenu menuWithItems:nil];
         
         NSDictionary *sysRules = [self systemRules];
         
         for (NSString *ruleKey in sysRules.allKeys) {
             CCMenuItemFont *item = [CCMenuItemFont itemWithString:ruleKey block:^(id sender) {
                 NSDictionary *rules = [sysRules objectForKey:ruleKey];
-                menu.visible = NO;
+                menu_.visible = NO;
                 [self showLSystemWithRules:rules];
             }];
-            [menu addChild:item];
+            [menu_ addChild:item];
         }
         
-        [menu alignItemsVertically];
+        [menu_ alignItemsVertically];
         
-        [self addChild:menu z:2];        
+        [self addChild:menu_ z:2];        
     }
     
-    menu.visible = YES;
+    menu_.visible = YES;
 }
 
 -(void) showLSystemWithRules:(NSDictionary*)rules {
     // remove current lsystem
-    [lsystem removeFromParentAndCleanup:YES];
+    [lsystem_ removeFromParentAndCleanup:YES];
     
-    self.lsystem = [LSystemNode lsystemWithRules:rules];
-    [self addChild:lsystem];
+    lsystem_ = [LSystemNode lsystemWithRules:rules];
+    [self addChild:lsystem_];
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
