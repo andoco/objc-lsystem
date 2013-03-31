@@ -404,7 +404,6 @@
 		49775F5815307B6300D9F40D = {
 			isa = PBXGroup;
 			children = (
-				495E5ED515A759E400B1DB5F /* libLSystem.a */,
 				49775F7715307B6300D9F40D /* LSystem-Cocos2d */,
 				49775F6615307B6300D9F40D /* Frameworks */,
 				49775F6415307B6300D9F40D /* Products */,
@@ -422,6 +421,7 @@
 		49775F6615307B6300D9F40D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				495E5ED515A759E400B1DB5F /* libLSystem.a */,
 				49775F6715307B6300D9F40D /* QuartzCore.framework */,
 				49775F6915307B6300D9F40D /* OpenGLES.framework */,
 				49775F6B15307B6300D9F40D /* OpenAL.framework */,
@@ -437,6 +437,8 @@
 		49775F7715307B6300D9F40D /* LSystem-Cocos2d */ = {
 			isa = PBXGroup;
 			children = (
+				49FD01C417087CFB00B75B30 /* Commands */,
+				49FD01C517087D0800B75B30 /* Segments */,
 				497760C915307B6700D9F40D /* AppDelegate.h */,
 				497760CA15307B6700D9F40D /* AppDelegate.m */,
 				497760D215307B6700D9F40D /* GameConfig.h */,
@@ -445,14 +447,10 @@
 				497760D015307B6700D9F40D /* LSystemLayer.m */,
 				49C549D315A8D42E00278B94 /* LSystemNode.h */,
 				49C549D415A8D42E00278B94 /* LSystemNode.m */,
-				49D3EA2315A745C800DA0A32 /* RenderTextureSegmentDrawer.h */,
-				49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */,
 				49775F7815307B6300D9F40D /* Resources */,
 				497760CC15307B6700D9F40D /* RootViewController.h */,
 				497760CD15307B6700D9F40D /* RootViewController.m */,
 				497760C515307B6700D9F40D /* Supporting Files */,
-				49FD01BB1708708A00B75B30 /* LeafDrawCommand.h */,
-				49FD01BC1708708A00B75B30 /* LeafDrawCommand.m */,
 			);
 			path = "LSystem-Cocos2d";
 			sourceTree = "<group>";
@@ -787,6 +785,24 @@
 				497760C715307B6700D9F40D /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49FD01C417087CFB00B75B30 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				49FD01BB1708708A00B75B30 /* LeafDrawCommand.h */,
+				49FD01BC1708708A00B75B30 /* LeafDrawCommand.m */,
+			);
+			name = Commands;
+			sourceTree = "<group>";
+		};
+		49FD01C517087D0800B75B30 /* Segments */ = {
+			isa = PBXGroup;
+			children = (
+				49D3EA2315A745C800DA0A32 /* RenderTextureSegmentDrawer.h */,
+				49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */,
+			);
+			name = Segments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

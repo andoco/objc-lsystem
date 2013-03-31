@@ -11,7 +11,7 @@
 
 #import "LSystem.h"
 
-@interface RenderTextureSegmentDrawer : CCNode <SegmentDrawer> {
+@interface RenderTextureSegmentDrawer : NSObject <SegmentDrawer> {
     
 }
 

@@ -46,7 +46,7 @@
         [self addChild:rt];
 
         // render segments to a CCRenderTexture
-        RenderTextureSegmentDrawer *segDrawer = [RenderTextureSegmentDrawer node];
+        RenderTextureSegmentDrawer *segDrawer = [[RenderTextureSegmentDrawer alloc] init];
         segDrawer.rt = rt;
         
         // create LSystem
@@ -60,7 +60,7 @@
         leafCommand.rt = rt;
         lsys.commands = [NSDictionary dictionaryWithObjectsAndKeys:leafCommand, @"L", nil];
         
-        generation = 6;
+        self.generation = 6;
         
         // find duration required for drawing l-system
         duration = [lsys duration:generation];
