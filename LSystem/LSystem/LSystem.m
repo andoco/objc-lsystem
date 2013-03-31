@@ -99,7 +99,10 @@
             // Modification command symbols:
             if ([cmd isEqualToString:@"F"]) {
                 time -= self.cost;
-            } else if ([cmd isEqualToString:@"!"]) 
+                
+                // TODO: This fixes duration issue with "Straight" ruleset but breaks "Branches" ruleset
+//                _duration = 1 + (LSYS_DURATION_MAX - time);
+            } else if ([cmd isEqualToString:@"!"])
                 aAngle = -aAngle;
             else if ([cmd isEqualToString:@"("]) 
                 aAngle *= 1.1;
