@@ -19,8 +19,8 @@
     
 }
 
-@property (nonatomic, retain) CCMenu *menu;
-@property (nonatomic, retain) LSystemNode *lsystem;
+@property (nonatomic, strong) CCMenu *menu;
+@property (nonatomic, strong) LSystemNode *lsystem;
 
 @end
 
@@ -60,11 +60,6 @@
 }
 
 // on "dealloc" you need to release all your retained objects
-- (void) dealloc
-{
-    [menu release];
-	[super dealloc];
-}
 
 -(NSDictionary*) systemRules {
     NSDictionary *straight = [NSDictionary dictionaryWithObjectsAndKeys:@"FFF", @"1", nil];

@@ -13,6 +13,6 @@
 
 @interface LeafDrawCommand : NSObject <LSysCommand>
 
-@property (nonatomic, retain) CCRenderTexture *rt;
+@property (nonatomic, strong) CCRenderTexture *rt;
 
 @end

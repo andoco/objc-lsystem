@@ -18,7 +18,7 @@
     CGFloat time;
 }
 
-@property (nonatomic, retain) LSystem *lsys;
+@property (nonatomic, strong) LSystem *lsys;
 
 @end
 
@@ -29,7 +29,7 @@
 @synthesize lsys;
 
 +(id) lsystemWithRules:(NSDictionary*)rules {
-    return [[[LSystemNode alloc] initWithRules:rules] autorelease];
+    return [[LSystemNode alloc] initWithRules:rules];
 }
 
 -(id) initWithRules:(NSDictionary*)rules {
@@ -50,7 +50,7 @@
         segDrawer.rt = rt;
         
         // create LSystem
-        self.lsys = [[[LSystem alloc] init] autorelease];
+        self.lsys = [[LSystem alloc] init];
         lsys.segment = segDrawer;
         lsys.rules = rules;
         lsys.segmentLength = size.height / 10;
@@ -72,10 +72,6 @@
     return self;
 }
 
--(void) dealloc {
-    [lsys release];
-    [super dealloc];
-}
 
 -(void) update:(ccTime)dt {
     // animate drawing of l-system
