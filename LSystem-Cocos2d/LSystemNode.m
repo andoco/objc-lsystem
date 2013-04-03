@@ -23,6 +23,7 @@
 
         self.generation = 6;
         self.segmentLength = size.height / 10;
+        self.angle = 20;
         
         rt_ = [CCRenderTexture renderTextureWithWidth:size.width height:size.height];
         rt_.position = centre;
@@ -43,6 +44,7 @@
     lsys_.segment = segDrawer;
     lsys_.rules = rules;
     lsys_.segmentLength = self.segmentLength;
+    lsys_.angle = self.angle;
     lsys_.cost = 0.1;
     
     LeafDrawCommand *leafCommand = [[LeafDrawCommand alloc] init];

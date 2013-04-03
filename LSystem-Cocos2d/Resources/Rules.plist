@@ -2,6 +2,92 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Strong (Acacia)</key>
+	<dict>
+		<key>Generations</key>
+		<integer>6</integer>
+		<key>SegmentLength</key>
+		<integer>40</integer>
+		<key>Angle</key>
+		<integer>25</integer>
+		<key>Rules</key>
+		<dict>
+			<key>1</key>
+			<string>FFF-[-F+F[2]-[1]]+[+F+F[1]-[1]]</string>
+			<key>2</key>
+			<string>FF-[-F+F]+[+F+F2]</string>
+		</dict>
+	</dict>
+	<key>Slender (Eucalyptus)</key>
+	<dict>
+		<key>Generations</key>
+		<integer>6</integer>
+		<key>SegmentLength</key>
+		<integer>40</integer>
+		<key>Angle</key>
+		<integer>23</integer>
+		<key>Rules</key>
+		<dict>
+			<key>1</key>
+			<string>FFF+[2]F+(&gt;[---1]</string>
+			<key>2</key>
+			<string>FFF[1]+[1]+[1]+[1]</string>
+		</dict>
+	</dict>
+	<key>Old (Elm)</key>
+	<dict>
+		<key>Generations</key>
+		<integer>6</integer>
+		<key>SegmentLength</key>
+		<integer>40</integer>
+		<key>Angle</key>
+		<integer>20</integer>
+		<key>Rules</key>
+		<dict>
+			<key>1</key>
+			<string>F-F+F+F[(+2]-FF-F[(-2](2</string>
+			<key>2</key>
+			<string>F+F-FF[(+1]-FFF[(-1](1</string>
+		</dict>
+	</dict>
+	<key>Great (Yew)</key>
+	<dict>
+		<key>Generations</key>
+		<integer>6</integer>
+		<key>SegmentLength</key>
+		<integer>40</integer>
+		<key>Angle</key>
+		<integer>20</integer>
+		<key>Rules</key>
+		<dict>
+			<key>1</key>
+			<string>F-F+F[++2][F+2][F-2][--2]</string>
+			<key>2</key>
+			<string>F+FF-F[++3][+3][-4][--4]</string>
+			<key>3</key>
+			<string>-[4]F-FF-FF-FF-F[4]</string>
+			<key>4</key>
+			<string>+[3]F+FF+FF+FF+F[3]</string>
+		</dict>
+	</dict>
+	<key>Tall (Beech)</key>
+	<dict>
+		<key>Generations</key>
+		<integer>6</integer>
+		<key>SegmentLength</key>
+		<integer>40</integer>
+		<key>Angle</key>
+		<integer>15</integer>
+		<key>Rules</key>
+		<dict>
+			<key>1</key>
+			<string>FF[-2][3][+3]</string>
+			<key>2</key>
+			<string>FF+F-F-F[FFF3][+3]-F-F3</string>
+			<key>3</key>
+			<string>FF-F+F+F[2][-2]+F+F2</string>
+		</dict>
+	</dict>
 	<key>Branches With Leaves</key>
 	<dict>
 		<key>Generations</key>
@@ -12,18 +98,22 @@
 			<string>FF-[1]++F+FL</string>
 		</dict>
 	</dict>
-	<key>Gnarled</key>
+	<key>Gnarled (Oak)</key>
 	<dict>
 		<key>Generations</key>
 		<integer>6</integer>
+		<key>SegmentLength</key>
+		<integer>40</integer>
+		<key>Angle</key>
+		<integer>20</integer>
 		<key>Rules</key>
 		<dict>
 			<key>1</key>
 			<string>FF[++FF[2][+FF2]][-FF3]</string>
 			<key>2</key>
-			<string>F-F-F+[2]F+F+F+F+&gt;[2]</string>
+			<string>F-F-F+[2]F+F+F+F+([2]</string>
 			<key>3</key>
-			<string>F+F+F-[2]F-F-F-F-&gt;[2]</string>
+			<string>F+F+F-[2]F-F-F-F-([2]</string>
 		</dict>
 	</dict>
 	<key>Elaborate</key>
@@ -80,10 +170,14 @@
 			<string>FF-[1]++F+F</string>
 		</dict>
 	</dict>
-	<key>Crooked</key>
+	<key>Crooked (Hawthorn)</key>
 	<dict>
 		<key>Generations</key>
 		<integer>6</integer>
+		<key>SegmentLength</key>
+		<integer>40</integer>
+		<key>Angle</key>
+		<integer>20</integer>
 		<key>Rules</key>
 		<dict>
 			<key>1</key>

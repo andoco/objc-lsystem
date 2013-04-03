@@ -65,9 +65,15 @@
     NSDictionary *rules = [ruleConfig objectForKey:@"Rules"];
     
     lsystem_ = [LSystemNode node];
+    
     lsystem_.generation = [[ruleConfig objectForKey:@"Generations"] integerValue];
+    
     if (ruleConfig[@"SegmentLength"]) {
         lsystem_.segmentLength = [ruleConfig[@"SegmentLength"] floatValue];
+    }
+    
+    if (ruleConfig[@"Angle"]) {
+        lsystem_.angle = [ruleConfig[@"Angle"] floatValue];
     }
     
     [self addChild:lsystem_];
