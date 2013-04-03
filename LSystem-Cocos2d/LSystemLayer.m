@@ -64,12 +64,15 @@
     
     NSDictionary *rules = [ruleConfig objectForKey:@"Rules"];
     
-    lsystem_ = [LSystemNode lsystemWithRules:rules];
+    lsystem_ = [LSystemNode node];
     lsystem_.generation = [[ruleConfig objectForKey:@"Generations"] integerValue];
+    if (ruleConfig[@"SegmentLength"]) {
+        lsystem_.segmentLength = [ruleConfig[@"SegmentLength"] floatValue];
+    }
     
     [self addChild:lsystem_];
     
-    [lsystem_ start];
+    [lsystem_ startWithRules:rules];
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {

@@ -6,9 +6,8 @@
 }
 
 @property (nonatomic, assign) NSInteger generation;
+@property (nonatomic, assign) CGFloat segmentLength;
 
-+(id) lsystemWithRules:(NSDictionary*)rules;
--(id) initWithRules:(NSDictionary*)rules;
--(void) start;
+-(void) startWithRules:(NSDictionary*)rules;
 
 @end

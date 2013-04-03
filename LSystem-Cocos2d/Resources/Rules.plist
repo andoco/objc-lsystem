@@ -96,6 +96,8 @@
 	<dict>
 		<key>Generations</key>
 		<integer>2</integer>
+		<key>SegmentLength</key>
+		<integer>30</integer>
 		<key>Rules</key>
 		<dict>
 			<key>1</key>
