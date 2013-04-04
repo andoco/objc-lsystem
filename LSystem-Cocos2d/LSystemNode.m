@@ -14,16 +14,19 @@
     BOOL started_;
 }
 
--(id) init {
-    if ((self = [super init])) {
-        // find center bottom of screen
-        CGSize size = [[CCDirector sharedDirector] winSize];
-        CGPoint centre = ccpMult(ccpFromSize(size), 0.5);
-        pos_ = ccp(centre.x, 0);
++(id) nodeWithSize:(CGSize)size {
+    return [[self alloc] initWithSize:size];
+}
 
+-(id) initWithSize:(CGSize)size {
+    if ((self = [super init])) {
+        self.contentSize = size;
         self.generation = 6;
         self.segmentLength = size.height / 10;
         self.angle = 20;
+        
+        pos_ = ccp(size.width/2, 0);
+        CGPoint centre = ccpMult(ccpFromSize(size), 0.5);
         
         rt_ = [CCRenderTexture renderTextureWithWidth:size.width height:size.height];
         rt_.position = centre;
@@ -32,7 +35,7 @@
     return self;
 }
 
--(void) startWithRules:(NSDictionary*)rules {
+-(void) startWithRules:(NSDictionary*)rules animate:(BOOL)animate {
     CCLOG(@"Starting with rules %@", rules);
     
     // render segments to a CCRenderTexture
@@ -51,13 +54,17 @@
     leafCommand.rt = rt_;
     lsys_.commands = [NSDictionary dictionaryWithObjectsAndKeys:leafCommand, @"L", nil];
 
-    // find duration required for drawing l-system
-    duration_ = [lsys_ duration:self.generation];
-    CCLOG(@"Drawing %d generations with duration %f", self.generation, duration_);
-    time_ = 0;
-    started_ = YES;
-    
-    [self scheduleUpdate];
+    if (animate) {
+        // find duration required for drawing l-system
+        duration_ = [lsys_ duration:self.generation];
+        CCLOG(@"Drawing %d generations with duration %f", self.generation, duration_);
+        time_ = 0;
+        started_ = YES;
+        
+        [self scheduleUpdate];
+    } else {
+        [lsys_ draw:pos_ generation:self.generation];
+    }
 }
 
 -(void) update:(ccTime)dt {

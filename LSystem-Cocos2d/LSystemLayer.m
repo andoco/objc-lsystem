@@ -64,7 +64,7 @@
     
     NSDictionary *rules = [ruleConfig objectForKey:@"Rules"];
     
-    lsystem_ = [LSystemNode node];
+    lsystem_ = [LSystemNode nodeWithSize:self.contentSize];
     
     lsystem_.generation = [[ruleConfig objectForKey:@"Generations"] integerValue];
     
@@ -78,7 +78,7 @@
     
     [self addChild:lsystem_];
     
-    [lsystem_ startWithRules:rules];
+    [lsystem_ startWithRules:rules animate:YES];
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {

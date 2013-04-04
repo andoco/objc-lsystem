@@ -9,6 +9,8 @@
 @property (nonatomic, assign) CGFloat segmentLength;
 @property (nonatomic, assign) CGFloat angle;
 
--(void) startWithRules:(NSDictionary*)rules;
++(id) nodeWithSize:(CGSize)size;
+-(id) initWithSize:(CGSize)size;
+-(void) startWithRules:(NSDictionary*)rules animate:(BOOL)animate;
 
 @end
