@@ -21,14 +21,18 @@
 -(id) initWithSize:(CGSize)size {
     if ((self = [super init])) {
         self.contentSize = size;
+        self.anchorPoint = ccp(0.5,0.5);
         self.generation = 6;
         self.segmentLength = size.height / 10;
         self.angle = 20;
         
-        pos_ = ccp(size.width/2, 0);
         CGPoint centre = ccpMult(ccpFromSize(size), 0.5);
+        self.drawOrigin = centre;
+        
+        self.clearColor = ccc4f(0, 0, 0, 0);
         
         rt_ = [CCRenderTexture renderTextureWithWidth:size.width height:size.height];
+        rt_.anchorPoint = ccp(0.5,0.5);
         rt_.position = centre;
         [self addChild:rt_];
     }
@@ -63,7 +67,8 @@
         
         [self scheduleUpdate];
     } else {
-        [lsys_ draw:pos_ generation:self.generation];
+        [rt_ clear:self.clearColor.r g:self.clearColor.g b:self.clearColor.b a:self.clearColor.a];
+        [lsys_ draw:self.drawOrigin generation:self.generation];
     }
 }
 
@@ -74,9 +79,9 @@
     if (time_ < duration_) {
         time_ += dt;
         
-        [rt_ clear:0 g:0 b:0 a:0];
+        [rt_ clear:self.clearColor.r g:self.clearColor.g b:self.clearColor.b a:self.clearColor.a];
         
-        [lsys_ draw:pos_ generation:self.generation time:time_ ease:-1];
+        [lsys_ draw:self.drawOrigin generation:self.generation time:time_ ease:-1];
     }
 }
 

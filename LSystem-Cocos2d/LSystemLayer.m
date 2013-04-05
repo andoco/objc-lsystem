@@ -23,13 +23,7 @@
 {
 	if( (self=[super init])) {
         [self setTouchEnabled:YES];
-        [self showMenu];
-        
-        CGSize size = [[CCDirector sharedDirector] winSize];
-        CCRenderTexture *bg = [CCRenderTexture renderTextureWithWidth:size.width height:size.height];
-        bg.position = ccpMult(ccpFromSize(size), 0.5);
-        [bg clear:0.4 g:0.4 b:0.8 a:1];
-        [self addChild:bg];
+        [self showMenu];        
 	}
 	return self;
 }
@@ -70,8 +64,13 @@
     
     NSDictionary *rules = [ruleConfig objectForKey:@"Rules"];
     
-    lsystem_ = [LSystemNode nodeWithSize:self.contentSize];
+    CGSize size = self.contentSize;
+    CGSize lsysSize = size;
     
+    lsystem_ = [LSystemNode nodeWithSize:lsysSize];
+    lsystem_.position = ccpMult(ccpFromSize(size), 0.5); // center of layer
+    lsystem_.drawOrigin = ccp(lsysSize.width/2, 0);
+    lsystem_.clearColor = ccc4f(0.4, 0.4, 0.8, 1);
     lsystem_.generation = [[ruleConfig objectForKey:@"Generations"] integerValue];
     
     if (ruleConfig[@"SegmentLength"]) {
