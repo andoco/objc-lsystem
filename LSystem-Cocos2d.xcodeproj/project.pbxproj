@@ -28,7 +28,6 @@
 		497760CB15307B6700D9F40D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760CA15307B6700D9F40D /* AppDelegate.m */; };
 		497760D115307B6700D9F40D /* LSystemLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760D015307B6700D9F40D /* LSystemLayer.m */; };
 		49C549D515A8D42F00278B94 /* LSystemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C549D415A8D42E00278B94 /* LSystemNode.m */; };
-		49D3EA2515A745C800DA0A32 /* RenderTextureSegmentDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */; };
 		49FD01B7170849F900B75B30 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49FD01B4170849F900B75B30 /* Default-568h@2x.png */; };
 		49FD01B8170849F900B75B30 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 49FD01B5170849F900B75B30 /* Default-Landscape~ipad.png */; };
 		49FD01B9170849F900B75B30 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49FD01B6170849F900B75B30 /* Default@2x.png */; };
@@ -178,8 +177,6 @@
 		497760D015307B6700D9F40D /* LSystemLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSystemLayer.m; sourceTree = "<group>"; };
 		49C549D315A8D42E00278B94 /* LSystemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystemNode.h; sourceTree = "<group>"; };
 		49C549D415A8D42E00278B94 /* LSystemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSystemNode.m; sourceTree = "<group>"; };
-		49D3EA2315A745C800DA0A32 /* RenderTextureSegmentDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderTextureSegmentDrawer.h; sourceTree = "<group>"; };
-		49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderTextureSegmentDrawer.m; sourceTree = "<group>"; };
 		49FD01B4170849F900B75B30 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		49FD01B5170849F900B75B30 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		49FD01B6170849F900B75B30 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
@@ -495,7 +492,6 @@
 			children = (
 				49FD03831708879C00B75B30 /* libs */,
 				49FD01C417087CFB00B75B30 /* Commands */,
-				49FD01C517087D0800B75B30 /* Segments */,
 				497760C915307B6700D9F40D /* AppDelegate.h */,
 				497760CA15307B6700D9F40D /* AppDelegate.m */,
 				497760CF15307B6700D9F40D /* LSystemLayer.h */,
@@ -545,15 +541,6 @@
 				49FD01BC1708708A00B75B30 /* LeafDrawCommand.m */,
 			);
 			name = Commands;
-			sourceTree = "<group>";
-		};
-		49FD01C517087D0800B75B30 /* Segments */ = {
-			isa = PBXGroup;
-			children = (
-				49D3EA2315A745C800DA0A32 /* RenderTextureSegmentDrawer.h */,
-				49D3EA2415A745C800DA0A32 /* RenderTextureSegmentDrawer.m */,
-			);
-			name = Segments;
 			sourceTree = "<group>";
 		};
 		49FD03831708879C00B75B30 /* libs */ = {
@@ -989,7 +976,6 @@
 				497760C815307B6700D9F40D /* main.m in Sources */,
 				497760CB15307B6700D9F40D /* AppDelegate.m in Sources */,
 				497760D115307B6700D9F40D /* LSystemLayer.m in Sources */,
-				49D3EA2515A745C800DA0A32 /* RenderTextureSegmentDrawer.m in Sources */,
 				49C549D515A8D42F00278B94 /* LSystemNode.m in Sources */,
 				49FD01BD1708708B00B75B30 /* LeafDrawCommand.m in Sources */,
 				49FD04881708879C00B75B30 /* CCAction.m in Sources */,
