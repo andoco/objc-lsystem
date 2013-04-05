@@ -74,7 +74,7 @@
     if (time_ < duration_) {
         time_ += dt;
         
-        [rt_ clear:0 g:0 b:0 a:1];
+        [rt_ clear:0 g:0 b:0 a:0];
         
         [lsys_ draw:pos_ generation:self.generation time:time_ ease:-1];
     }

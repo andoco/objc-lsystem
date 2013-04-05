@@ -24,6 +24,12 @@
 	if( (self=[super init])) {
         [self setTouchEnabled:YES];
         [self showMenu];
+        
+        CGSize size = [[CCDirector sharedDirector] winSize];
+        CCRenderTexture *bg = [CCRenderTexture renderTextureWithWidth:size.width height:size.height];
+        bg.position = ccpMult(ccpFromSize(size), 0.5);
+        [bg clear:0.4 g:0.4 b:0.8 a:1];
+        [self addChild:bg];
 	}
 	return self;
 }
