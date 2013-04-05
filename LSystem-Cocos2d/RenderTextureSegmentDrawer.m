@@ -21,6 +21,8 @@
 -(void) segmentFrom:(CGPoint)from to:(CGPoint)to generation:(NSInteger)generation time:(CGFloat)time identifier:(NSInteger)identifier {
     [_rt begin];
     
+    ccGLBlendFunc(GL_ONE,GL_ZERO);
+    
     CGFloat generationWidth = [self widthForGeneration:generation];
     CGFloat width = generationWidth;
     
