@@ -2,7 +2,7 @@
 
 #import "LeafDrawCommand.h"
 
-static const ccColor4B LSystemLeafColorSummer = {50, 150, 50, 50}; // green
+static const ccColor4B LSystemLeafColorSummer = {50, 100, 50, 150}; // green
 static const ccColor4B LSystemLeafColorSpring = {150, 50, 50, 50}; // pink
 static const ccColor4B LSystemLeafColorAutumn = {60, 30, 10, 50}; // red-brown
 
@@ -35,7 +35,7 @@ static const ccColor4B LSystemLeafColorAutumn = {60, 30, 10, 50}; // red-brown
         self.widthScaleFactor = 1.2;
         self.leavesPerSegment = 5;
         self.leafColor = LSystemLeafColorSummer;
-        self.maxLeafSize = size.width / 50;
+        self.maxLeafSize = size.height / 100;
         
         CGPoint centre = ccpMult(ccpFromSize(size), 0.5);
         self.drawOrigin = centre;
