@@ -31,11 +31,11 @@ static const ccColor4B LSystemLeafColorAutumn = {60, 30, 10, 50}; // red-brown
         self.angle = 20;
         
         // segments
-        self.baseWidth = 1;
+        self.baseWidth = size.width / 1000;
         self.widthScaleFactor = 1.2;
         self.leavesPerSegment = 5;
-        self.leafColor = LSystemLeafColorAutumn; //ccc4(50, 150, 50, 50);
-        self.maxLeafSize = 5;
+        self.leafColor = LSystemLeafColorSummer;
+        self.maxLeafSize = size.width / 50;
         
         CGPoint centre = ccpMult(ccpFromSize(size), 0.5);
         self.drawOrigin = centre;
