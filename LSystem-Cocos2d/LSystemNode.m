@@ -45,7 +45,7 @@ static const ccColor4B LSystemLeafColorAutumn = {60, 30, 10, 50}; // red-brown
         rt_ = [CCRenderTexture renderTextureWithWidth:size.width height:size.height];
         rt_.anchorPoint = ccp(0.5,0.5);
         rt_.position = centre;
-        [self addChild:rt_];        
+        [self addChild:rt_];
     }
     return self;
 }
@@ -77,6 +77,10 @@ static const ccColor4B LSystemLeafColorAutumn = {60, 30, 10, 50}; // red-brown
         [rt_ clear:self.clearColor.r g:self.clearColor.g b:self.clearColor.b a:self.clearColor.a];
         [lsys_ draw:self.drawOrigin generation:self.generation];
     }
+}
+
+-(UIImage*) image {
+    return [rt_ getUIImage];
 }
 
 -(void) update:(ccTime)dt {

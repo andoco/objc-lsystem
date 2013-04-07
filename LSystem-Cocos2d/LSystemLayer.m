@@ -86,8 +86,22 @@
     [lsystem_ startWithRules:rules animate:YES];
 }
 
+-(void) saveLSystemImage {
+    NSString *filepath = [[NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]];
+    [[NSFileManager defaultManager] createDirectoryAtPath:filepath withIntermediateDirectories:YES attributes:nil error:nil];
+    filepath = [filepath stringByAppendingPathComponent:@"Tree.png"];
+    
+    UIImage *img = [lsystem_ image];
+    NSData *imgData = UIImagePNGRepresentation(img);
+    [imgData writeToFile:filepath atomically:YES];
+}
+
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    [self showMenu];
+    if (touch.tapCount == 2) {
+        [self saveLSystemImage];
+    } else {
+        [self showMenu];
+    }
     
     return YES;
 }

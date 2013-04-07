@@ -25,5 +25,6 @@
 +(id) nodeWithSize:(CGSize)size;
 -(id) initWithSize:(CGSize)size;
 -(void) startWithRules:(NSDictionary*)rules animate:(BOOL)animate;
+-(UIImage*) image;
 
 @end
