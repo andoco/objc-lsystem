@@ -123,7 +123,12 @@ static const ccColor4B LSystemLeafColorAutumn = {60, 30, 10, 50}; // red-brown
 //    ccDrawPoint(to);
     
     for (int i=0; i < self.leavesPerSegment; i++) {
-        CGPoint leafPoint = ccpAdd(ccpLerp(from, to, CCRANDOM_0_1()), ccp(5*CCRANDOM_0_1(),5*CCRANDOM_0_1()));
+        
+        CGPoint diff = ccpSub(to, from);
+        CGPoint leafDelta = ccp(diff.y*CCRANDOM_0_1(), 5*CCRANDOM_MINUS1_1());
+        leafDelta = ccpRotate(leafDelta, ccpNormalize(diff));
+        CGPoint leafPoint = ccpAdd(from, leafDelta);
+        
         CGFloat leafSize = self.maxLeafSize * CCRANDOM_0_1();
         ccPointSize(leafSize);
         ccDrawColor4B(_leafColor.r, _leafColor.g, _leafColor.b, _leafColor.a);
