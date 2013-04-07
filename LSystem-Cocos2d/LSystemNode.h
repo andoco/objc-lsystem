@@ -3,6 +3,10 @@
 
 #import "LSystem.h"
 
+static const ccColor4B LSystemLeafColorSummer = {50, 100, 50, 150}; // green
+static const ccColor4B LSystemLeafColorSpring = {150, 50, 50, 50}; // pink
+static const ccColor4B LSystemLeafColorAutumn = {60, 30, 10, 50}; // red-brown
+
 @interface LSystemNode : CCNode <SegmentDrawer>
 
 @property (nonatomic, assign) NSInteger generation;
