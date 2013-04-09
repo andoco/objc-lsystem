@@ -7,7 +7,9 @@
 
 @implementation LSystemLayer {
     CCMenu *menu_;
+    CCMenu *schemeMenu_;
     LSystemNode *lsystem_;
+    NSDictionary *currentRules_;
 }
 
 +(CCScene *) scene
@@ -55,7 +57,30 @@
         [self addChild:menu_ z:2];        
     }
     
+    [schemeMenu_ removeFromParentAndCleanup:YES];
     menu_.visible = YES;
+}
+
+-(void) showSchemeMenuForSchemes:(NSDictionary*)schemes {
+    schemeMenu_ = [CCMenu menuWithItems:nil];
+//    schemeMenu_.anchorPoint = ccp(0,1);
+    schemeMenu_.position = ccp(self.contentSize.width/10,self.contentSize.height/2);
+    
+    NSArray *sortedKeys = [schemes.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    for (NSString *schemeName in sortedKeys) {
+        CCMenuItemFont *item = [CCMenuItemFont itemWithString:schemeName block:^(id sender) {
+            NSDictionary *schemeConfig = [schemes objectForKey:schemeName];
+            [self setupLSystemWithScheme:schemeConfig];
+            [self startLSystemWithCurrentRules];
+        }];
+        
+        [schemeMenu_ addChild:item];
+    }
+    
+    [schemeMenu_ alignItemsVertically];
+    
+    [self addChild:schemeMenu_ z:2];
 }
 
 -(void) showLSystemWithConfig:(NSDictionary*)config {
@@ -91,11 +116,18 @@
         CCLOG(@"Setting up LSystemNode with scheme %@", schemeName);
         NSDictionary *segmentConfig = schemes[schemeName];
         [self setupLSystemWithScheme:segmentConfig];
+        
+        [schemeMenu_ removeFromParentAndCleanup:YES];
+        [self showSchemeMenuForSchemes:schemes];
     }
     
     [self addChild:lsystem_];
-    
-    [lsystem_ startWithRules:rules animate:YES];
+    currentRules_ = rules;
+    [self startLSystemWithCurrentRules];
+}
+
+-(void) startLSystemWithCurrentRules {
+    [lsystem_ startWithRules:currentRules_ animate:YES];
 }
 
 -(void) setupLSystemWithScheme:(NSDictionary*)schemeConfig {

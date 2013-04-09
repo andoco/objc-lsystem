@@ -68,10 +68,12 @@
         // find duration required for drawing l-system
         duration_ = [lsys_ duration:self.generation];
         CCLOG(@"Drawing %d generations with duration %f", self.generation, duration_);
+        
+        if (!started_)
+            [self scheduleUpdate];
+        
         time_ = 0;
         started_ = YES;
-        
-        [self scheduleUpdate];
     } else {
         [rt_ clear:self.clearColor.r g:self.clearColor.g b:self.clearColor.b a:self.clearColor.a];
         [lsys_ draw:self.drawOrigin generation:self.generation];
