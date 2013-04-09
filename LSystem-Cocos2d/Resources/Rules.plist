@@ -6,23 +6,57 @@
 	<dict>
 		<key>Schemes</key>
 		<dict>
+			<key>Winter</key>
+			<dict>
+				<key>generation</key>
+				<integer>6</integer>
+				<key>segmentLength</key>
+				<integer>40</integer>
+				<key>angle</key>
+				<integer>25</integer>
+				<key>drawMode</key>
+				<integer>1</integer>
+				<key>leavesPerSegment</key>
+				<integer>1</integer>
+				<key>maxLeafSize</key>
+				<integer>5</integer>
+				<key>leafColor</key>
+				<string>200,200,200,255</string>
+			</dict>
+			<key>Autumn</key>
+			<dict>
+				<key>generation</key>
+				<integer>6</integer>
+				<key>segmentLength</key>
+				<integer>40</integer>
+				<key>angle</key>
+				<integer>25</integer>
+				<key>drawMode</key>
+				<integer>1</integer>
+				<key>leavesPerSegment</key>
+				<integer>1</integer>
+				<key>maxLeafSize</key>
+				<integer>10</integer>
+				<key>leafColor</key>
+				<string>150,50,50,255</string>
+			</dict>
 			<key>Summer</key>
 			<dict>
-                <key>generation</key>
-                <integer>6</integer>
-                <key>segmentLength</key>
-                <integer>40</integer>
-                <key>angle</key>
-                <integer>25</integer>
-                <key>drawMode</key>
-                <integer>1</integer>
-                <key>leavesPerSegment</key>
-                <integer>1</integer>
-                <key>maxLeafSize</key>
-                <integer>10</integer>
-                <key>leafColor</key>
-                <string>0,220,0,255</string>
-            </dict>
+				<key>generation</key>
+				<integer>6</integer>
+				<key>segmentLength</key>
+				<integer>40</integer>
+				<key>angle</key>
+				<integer>25</integer>
+				<key>drawMode</key>
+				<integer>1</integer>
+				<key>leavesPerSegment</key>
+				<integer>1</integer>
+				<key>maxLeafSize</key>
+				<integer>10</integer>
+				<key>leafColor</key>
+				<string>0,220,0,255</string>
+			</dict>
 		</dict>
 		<key>Rules</key>
 		<dict>
@@ -31,6 +65,8 @@
 			<key>2</key>
 			<string>FF-[-F+F]+[+F+F2]</string>
 		</dict>
+		<key>DefaultScheme</key>
+		<string>Winter</string>
 	</dict>
 	<key>Slender (Eucalyptus)</key>
 	<dict>

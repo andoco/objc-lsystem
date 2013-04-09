@@ -87,7 +87,7 @@
     NSDictionary *schemes = config[@"Schemes"];
     
     if (schemes) {
-        NSString *schemeName = [schemes.allKeys objectAtIndex:0];
+        NSString *schemeName = config[@"DefaultScheme"] ? config[@"DefaultScheme"] : [schemes.allKeys objectAtIndex:0];
         CCLOG(@"Setting up LSystemNode with scheme %@", schemeName);
         NSDictionary *segmentConfig = schemes[schemeName];
         [self setupLSystemWithScheme:segmentConfig];
