@@ -3,9 +3,14 @@
 
 #import "LSystem.h"
 
-static const ccColor4B LSystemLeafColorSummer = {50, 100, 50, 150}; // green
-static const ccColor4B LSystemLeafColorSpring = {150, 50, 50, 50}; // pink
-static const ccColor4B LSystemLeafColorAutumn = {60, 30, 10, 50}; // red-brown
+static const ccColor4B LSystemLeafColorSummer = {100, 175, 100, 255}; // green
+static const ccColor4B LSystemLeafColorSpring = {200, 150, 150, 255}; // pink
+static const ccColor4B LSystemLeafColorAutumn = {150, 130, 100, 255};
+
+typedef enum {
+    LSystemNodeLeafDrawModePoints,
+    LSystemNodeLeafDrawModeTriangles
+} LSystemLeafDrawMode;
 
 @interface LSystemNode : CCNode <SegmentDrawer>
 
@@ -22,6 +27,9 @@ static const ccColor4B LSystemLeafColorAutumn = {60, 30, 10, 50}; // red-brown
 #pragma mark Segments
 @property (nonatomic, assign) CGFloat baseWidth;
 @property (nonatomic, assign) CGFloat widthScaleFactor;
+
+#pragma mark Leaves
+@property (nonatomic, assign) LSystemLeafDrawMode drawMode;
 @property (nonatomic, assign) CGFloat leavesPerSegment;
 @property (nonatomic, assign) ccColor4B leafColor;
 @property (nonatomic, assign) CGFloat maxLeafSize;

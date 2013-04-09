@@ -29,7 +29,10 @@
         // segments
         self.baseWidth = size.width / 1000;
         self.widthScaleFactor = 1.2;
-        self.leavesPerSegment = 5;
+        
+        // leaves
+        self.drawMode = LSystemNodeLeafDrawModeTriangles;
+        self.leavesPerSegment = 1;
         self.leafColor = LSystemLeafColorSummer;
         self.maxLeafSize = size.height / 100;
         
@@ -108,7 +111,8 @@
     
     //    CCLOG(@"id=%d, generation=%d, time=%f, width=%f", identifier, generation, time, width);
     
-    ccColor4F c = ccc4f(0.5, 0.2 + (1.0 / (generation + 1) * 0.8), 0.3, 1);
+//    ccColor4F c = ccc4f(0.5, 0.2 + (1.0 / (generation + 1) * 0.8), 0.3, 1);
+    ccColor4F c = ccc4f(0.5, 0.4, 0.3, 1);
     
     ccDrawColor4F(c.r, c.g, c.b, c.a);
     glLineWidth(width * CC_CONTENT_SCALE_FACTOR());
@@ -117,21 +121,68 @@
 //    ccDrawColor4F(1, 1, 1, 1);
 //    ccPointSize(2);
 //    ccDrawPoint(to);
-    
-    for (int i=0; i < self.leavesPerSegment; i++) {
-        
-        CGPoint diff = ccpSub(to, from);
-        CGPoint leafDelta = ccp(diff.y*CCRANDOM_0_1(), 5*CCRANDOM_MINUS1_1());
-        leafDelta = ccpRotate(leafDelta, ccpNormalize(diff));
-        CGPoint leafPoint = ccpAdd(from, leafDelta);
-        
-        CGFloat leafSize = self.maxLeafSize * CCRANDOM_0_1();
-        ccPointSize(leafSize);
-        ccDrawColor4B(_leafColor.r, _leafColor.g, _leafColor.b, _leafColor.a);
-        ccDrawPoint(leafPoint);
-    }
+
+    [self drawLeavesFrom:from to:to];
     
     [rt_ end];
+}
+
+-(void) drawLeavesFrom:(CGPoint)from to:(CGPoint)to {
+    CGPoint diff = ccpSub(to, from);
+    CGPoint dir = ccpNormalize(diff);
+    
+    int numLeaves = roundf(CCRANDOM_0_1()*self.leavesPerSegment);
+    
+    for (int i=0; i < numLeaves; i++) {
+        CGPoint leafDelta = ccp(diff.y*CCRANDOM_0_1(), 5*CCRANDOM_MINUS1_1());
+        leafDelta = ccpRotate(leafDelta, dir);
+        CGPoint leafPoint = ccpAdd(from, leafDelta);
+        CGFloat leafSize = self.maxLeafSize * CCRANDOM_0_1();
+        
+        switch (self.drawMode) {
+            case LSystemNodeLeafDrawModePoints:
+                [self drawPointLeafAt:leafPoint size:leafSize];
+                break;
+            case LSystemNodeLeafDrawModeTriangles:
+                [self drawTriangleLeafAt:leafPoint size:leafSize direction:dir];
+                break;
+            default:
+                break;
+        }
+    }    
+}
+
+-(void) drawPointLeafAt:(CGPoint)leafPoint size:(CGFloat)leafSize {
+    ccPointSize(leafSize);
+    ccDrawColor4B(_leafColor.r, _leafColor.g, _leafColor.b, _leafColor.a);
+    ccDrawPoint(leafPoint);
+}
+
+-(void) drawTriangleLeafAt:(CGPoint)leafPoint size:(CGFloat)leafSize direction:(CGPoint)dir {
+    // triangle
+    CGPoint vertices[] = {
+        ccpAdd(leafPoint, ccpMult(ccpPerp(dir), leafSize)),
+        ccpAdd(leafPoint, ccpMult(ccpPerp(dir), -leafSize)),
+        ccpAdd(leafPoint, ccpMult(dir, leafSize*2))
+    };
+    ccColor4F c = [self varyLeafColor:ccc4FFromccc4B(_leafColor)];
+    ccDrawSolidPoly(vertices, 3, c);
+    
+    // triangle outline
+    glLineWidth(1*CC_CONTENT_SCALE_FACTOR());
+    ccColor4F outlineColor = [self darkenLeafColor:c];
+    ccDrawColor4F(outlineColor.r, outlineColor.g, outlineColor.b, outlineColor.a);
+    ccDrawPoly(vertices, 3, YES);
+}
+
+-(ccColor4F) varyLeafColor:(ccColor4F)color {
+    const CGFloat v = 0.05;
+    return ccc4f(color.r+CCRANDOM_MINUS1_1()*v, color.g+CCRANDOM_MINUS1_1()*v, color.b+CCRANDOM_MINUS1_1()*v, color.a);
+}
+
+-(ccColor4F) darkenLeafColor:(ccColor4F)color {
+    const CGFloat darkenFactor = 0.8;
+    return ccc4f(color.r*darkenFactor, color.g*darkenFactor, color.b*darkenFactor, 1);
 }
 
 @end
