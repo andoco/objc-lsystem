@@ -176,7 +176,7 @@
 }
 
 -(ccColor4F) varyLeafColor:(ccColor4F)color {
-    const CGFloat v = 0.05;
+    const CGFloat v = 0.1;
     return ccc4f(color.r+CCRANDOM_MINUS1_1()*v, color.g+CCRANDOM_MINUS1_1()*v, color.b+CCRANDOM_MINUS1_1()*v, color.a);
 }
 

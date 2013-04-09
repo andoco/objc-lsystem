@@ -4,12 +4,26 @@
 <dict>
 	<key>Strong (Acacia)</key>
 	<dict>
-		<key>Generations</key>
-		<integer>6</integer>
-		<key>SegmentLength</key>
-		<integer>40</integer>
-		<key>Angle</key>
-		<integer>25</integer>
+		<key>Schemes</key>
+		<dict>
+			<key>Summer</key>
+			<dict>
+                <key>generation</key>
+                <integer>6</integer>
+                <key>segmentLength</key>
+                <integer>40</integer>
+                <key>angle</key>
+                <integer>25</integer>
+                <key>drawMode</key>
+                <integer>1</integer>
+                <key>leavesPerSegment</key>
+                <integer>1</integer>
+                <key>maxLeafSize</key>
+                <integer>10</integer>
+                <key>leafColor</key>
+                <string>0,220,0,255</string>
+            </dict>
+		</dict>
 		<key>Rules</key>
 		<dict>
 			<key>1</key>
