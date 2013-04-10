@@ -2,250 +2,247 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Strong (Acacia)</key>
+	<key>Schemes</key>
 	<dict>
-		<key>Schemes</key>
+		<key>Winter</key>
 		<dict>
-			<key>Winter</key>
+			<key>leavesPerSegment</key>
+			<integer>1</integer>
+			<key>maxLeafSize</key>
+			<integer>5</integer>
+			<key>leafColor</key>
+			<string>200,200,200,255</string>
+			<key>drawMode</key>
+			<integer>1</integer>
+		</dict>
+		<key>Autumn</key>
+		<dict>
+			<key>leavesPerSegment</key>
+			<integer>1</integer>
+			<key>maxLeafSize</key>
+			<integer>10</integer>
+			<key>leafColor</key>
+			<string>150,50,50,255</string>
+			<key>drawMode</key>
+			<integer>1</integer>
+		</dict>
+		<key>Summer</key>
+		<dict>
+			<key>leavesPerSegment</key>
+			<integer>1</integer>
+			<key>maxLeafSize</key>
+			<integer>10</integer>
+			<key>leafColor</key>
+			<string>0,220,0,255</string>
+			<key>drawMode</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>Systems</key>
+	<dict>
+		<key>Strong (Acacia)</key>
+		<dict>
+			<key>Schemes</key>
 			<dict>
-				<key>generation</key>
-				<integer>6</integer>
-				<key>segmentLength</key>
-				<integer>40</integer>
-				<key>angle</key>
-				<integer>25</integer>
-				<key>drawMode</key>
-				<integer>1</integer>
-				<key>leavesPerSegment</key>
-				<integer>1</integer>
-				<key>maxLeafSize</key>
-				<integer>5</integer>
-				<key>leafColor</key>
-				<string>200,200,200,255</string>
+				<key>Winter</key>
+				<dict>
+					<key>maxLeafSize</key>
+					<integer>10</integer>
+				</dict>
 			</dict>
-			<key>Autumn</key>
+			<key>Rules</key>
 			<dict>
-				<key>generation</key>
-				<integer>6</integer>
-				<key>segmentLength</key>
-				<integer>40</integer>
-				<key>angle</key>
-				<integer>25</integer>
-				<key>drawMode</key>
-				<integer>1</integer>
-				<key>leavesPerSegment</key>
-				<integer>1</integer>
-				<key>maxLeafSize</key>
-				<integer>10</integer>
-				<key>leafColor</key>
-				<string>150,50,50,255</string>
+				<key>1</key>
+				<string>FFF-[-F+F[2]-[1]]+[+F+F[1]-[1]]</string>
+				<key>2</key>
+				<string>FF-[-F+F]+[+F+F2]</string>
 			</dict>
-			<key>Summer</key>
+			<key>generation</key>
+			<integer>6</integer>
+			<key>segmentLength</key>
+			<integer>40</integer>
+			<key>angle</key>
+			<integer>25</integer>
+		</dict>
+		<key>Slender (Eucalyptus)</key>
+		<dict>
+			<key>generation</key>
+			<integer>6</integer>
+			<key>segmentLength</key>
+			<integer>40</integer>
+			<key>angle</key>
+			<integer>23</integer>
+			<key>Rules</key>
 			<dict>
-				<key>generation</key>
-				<integer>6</integer>
-				<key>segmentLength</key>
-				<integer>40</integer>
-				<key>angle</key>
-				<integer>25</integer>
-				<key>drawMode</key>
-				<integer>1</integer>
-				<key>leavesPerSegment</key>
-				<integer>1</integer>
-				<key>maxLeafSize</key>
-				<integer>10</integer>
-				<key>leafColor</key>
-				<string>0,220,0,255</string>
+				<key>1</key>
+				<string>FFF+[2]F+(&gt;[---1]</string>
+				<key>2</key>
+				<string>FFF[1]+[1]+[1]+[1]</string>
 			</dict>
 		</dict>
-		<key>Rules</key>
+		<key>Old (Elm)</key>
 		<dict>
-			<key>1</key>
-			<string>FFF-[-F+F[2]-[1]]+[+F+F[1]-[1]]</string>
-			<key>2</key>
-			<string>FF-[-F+F]+[+F+F2]</string>
+			<key>generation</key>
+			<integer>6</integer>
+			<key>segmentLength</key>
+			<integer>40</integer>
+			<key>angle</key>
+			<integer>20</integer>
+			<key>Rules</key>
+			<dict>
+				<key>1</key>
+				<string>F-F+F+F[(+2]-FF-F[(-2](2</string>
+				<key>2</key>
+				<string>F+F-FF[(+1]-FFF[(-1](1</string>
+			</dict>
 		</dict>
-		<key>DefaultScheme</key>
-		<string>Winter</string>
-	</dict>
-	<key>Slender (Eucalyptus)</key>
-	<dict>
-		<key>Generations</key>
-		<integer>6</integer>
-		<key>SegmentLength</key>
-		<integer>40</integer>
-		<key>Angle</key>
-		<integer>23</integer>
-		<key>Rules</key>
+		<key>Great (Yew)</key>
 		<dict>
-			<key>1</key>
-			<string>FFF+[2]F+(&gt;[---1]</string>
-			<key>2</key>
-			<string>FFF[1]+[1]+[1]+[1]</string>
+			<key>generation</key>
+			<integer>6</integer>
+			<key>segmentLength</key>
+			<integer>40</integer>
+			<key>angle</key>
+			<integer>20</integer>
+			<key>Rules</key>
+			<dict>
+				<key>1</key>
+				<string>F-F+F[++2][F+2][F-2][--2]</string>
+				<key>2</key>
+				<string>F+FF-F[++3][+3][-4][--4]</string>
+				<key>3</key>
+				<string>-[4]F-FF-FF-FF-F[4]</string>
+				<key>4</key>
+				<string>+[3]F+FF+FF+FF+F[3]</string>
+			</dict>
 		</dict>
-	</dict>
-	<key>Old (Elm)</key>
-	<dict>
-		<key>Generations</key>
-		<integer>6</integer>
-		<key>SegmentLength</key>
-		<integer>40</integer>
-		<key>Angle</key>
-		<integer>20</integer>
-		<key>Rules</key>
+		<key>Tall (Beech)</key>
 		<dict>
-			<key>1</key>
-			<string>F-F+F+F[(+2]-FF-F[(-2](2</string>
-			<key>2</key>
-			<string>F+F-FF[(+1]-FFF[(-1](1</string>
+			<key>generation</key>
+			<integer>6</integer>
+			<key>segmentLength</key>
+			<integer>40</integer>
+			<key>angle</key>
+			<integer>15</integer>
+			<key>Rules</key>
+			<dict>
+				<key>1</key>
+				<string>FF[-2][3][+3]</string>
+				<key>2</key>
+				<string>FF+F-F-F[FFF3][+3]-F-F3</string>
+				<key>3</key>
+				<string>FF-F+F+F[2][-2]+F+F2</string>
+			</dict>
 		</dict>
-	</dict>
-	<key>Great (Yew)</key>
-	<dict>
-		<key>Generations</key>
-		<integer>6</integer>
-		<key>SegmentLength</key>
-		<integer>40</integer>
-		<key>Angle</key>
-		<integer>20</integer>
-		<key>Rules</key>
+		<key>Branches With Leaves</key>
 		<dict>
-			<key>1</key>
-			<string>F-F+F[++2][F+2][F-2][--2]</string>
-			<key>2</key>
-			<string>F+FF-F[++3][+3][-4][--4]</string>
-			<key>3</key>
-			<string>-[4]F-FF-FF-FF-F[4]</string>
-			<key>4</key>
-			<string>+[3]F+FF+FF+FF+F[3]</string>
+			<key>generation</key>
+			<integer>6</integer>
+			<key>Rules</key>
+			<dict>
+				<key>1</key>
+				<string>FF-[1]++F+FL</string>
+			</dict>
 		</dict>
-	</dict>
-	<key>Tall (Beech)</key>
-	<dict>
-		<key>Generations</key>
-		<integer>6</integer>
-		<key>SegmentLength</key>
-		<integer>40</integer>
-		<key>Angle</key>
-		<integer>15</integer>
-		<key>Rules</key>
+		<key>Gnarled (Oak)</key>
 		<dict>
-			<key>1</key>
-			<string>FF[-2][3][+3]</string>
-			<key>2</key>
-			<string>FF+F-F-F[FFF3][+3]-F-F3</string>
-			<key>3</key>
-			<string>FF-F+F+F[2][-2]+F+F2</string>
+			<key>generation</key>
+			<integer>6</integer>
+			<key>segmentLength</key>
+			<integer>40</integer>
+			<key>angle</key>
+			<integer>20</integer>
+			<key>Rules</key>
+			<dict>
+				<key>1</key>
+				<string>FF[++FF[2][+FF2]][-FF3]</string>
+				<key>2</key>
+				<string>F-F-F+[2]F+F+F+F+([2]</string>
+				<key>3</key>
+				<string>F+F+F-[2]F-F-F-F-([2]</string>
+			</dict>
 		</dict>
-	</dict>
-	<key>Branches With Leaves</key>
-	<dict>
-		<key>Generations</key>
-		<integer>6</integer>
-		<key>Rules</key>
+		<key>Elaborate</key>
 		<dict>
-			<key>1</key>
-			<string>FF-[1]++F+FL</string>
+			<key>generation</key>
+			<integer>6</integer>
+			<key>Rules</key>
+			<dict>
+				<key>1</key>
+				<string>FF[-2]3[+3]</string>
+				<key>2</key>
+				<string>FF+F-F-F[FFF3][+3]-F-F3</string>
+				<key>3</key>
+				<string>FF-F+F+F[2][-2]+F+F2</string>
+			</dict>
 		</dict>
-	</dict>
-	<key>Gnarled (Oak)</key>
-	<dict>
-		<key>Generations</key>
-		<integer>6</integer>
-		<key>SegmentLength</key>
-		<integer>40</integer>
-		<key>Angle</key>
-		<integer>20</integer>
-		<key>Rules</key>
+		<key>More Branches</key>
 		<dict>
-			<key>1</key>
-			<string>FF[++FF[2][+FF2]][-FF3]</string>
-			<key>2</key>
-			<string>F-F-F+[2]F+F+F+F+([2]</string>
-			<key>3</key>
-			<string>F+F+F-[2]F-F-F-F-([2]</string>
+			<key>generation</key>
+			<integer>6</integer>
+			<key>Rules</key>
+			<dict>
+				<key>1</key>
+				<string>FF-[1]++F+F+1</string>
+			</dict>
 		</dict>
-	</dict>
-	<key>Elaborate</key>
-	<dict>
-		<key>Generations</key>
-		<integer>6</integer>
-		<key>Rules</key>
+		<key>Bend</key>
 		<dict>
-			<key>1</key>
-			<string>FF[-2]3[+3]</string>
-			<key>2</key>
-			<string>FF+F-F-F[FFF3][+3]-F-F3</string>
-			<key>3</key>
-			<string>FF-F+F+F[2][-2]+F+F2</string>
+			<key>generation</key>
+			<integer>6</integer>
+			<key>Rules</key>
+			<dict>
+				<key>1</key>
+				<string>FF-1</string>
+			</dict>
 		</dict>
-	</dict>
-	<key>More Branches</key>
-	<dict>
-		<key>Generations</key>
-		<integer>6</integer>
-		<key>Rules</key>
+		<key>Straight</key>
 		<dict>
-			<key>1</key>
-			<string>FF-[1]++F+F+1</string>
+			<key>generation</key>
+			<integer>1</integer>
+			<key>Rules</key>
+			<dict>
+				<key>1</key>
+				<string>FFF</string>
+			</dict>
 		</dict>
-	</dict>
-	<key>Bend</key>
-	<dict>
-		<key>Generations</key>
-		<integer>6</integer>
-		<key>Rules</key>
+		<key>Branches</key>
 		<dict>
-			<key>1</key>
-			<string>FF-1</string>
+			<key>generation</key>
+			<integer>6</integer>
+			<key>Rules</key>
+			<dict>
+				<key>1</key>
+				<string>FF-[1]++F+F</string>
+			</dict>
 		</dict>
-	</dict>
-	<key>Straight</key>
-	<dict>
-		<key>Generations</key>
-		<integer>1</integer>
-		<key>Rules</key>
+		<key>Crooked (Hawthorn)</key>
 		<dict>
-			<key>1</key>
-			<string>FFF</string>
+			<key>generation</key>
+			<integer>6</integer>
+			<key>segmentLength</key>
+			<integer>40</integer>
+			<key>angle</key>
+			<integer>20</integer>
+			<key>Rules</key>
+			<dict>
+				<key>1</key>
+				<string>F-F+2</string>
+				<key>2</key>
+				<string>F-[[-F-F+F+FF2]+FF2]+F[+F+F+FF2]-FF+F-F2</string>
+			</dict>
 		</dict>
-	</dict>
-	<key>Branches</key>
-	<dict>
-		<key>Generations</key>
-		<integer>6</integer>
-		<key>Rules</key>
+		<key>My Tree</key>
 		<dict>
-			<key>1</key>
-			<string>FF-[1]++F+F</string>
-		</dict>
-	</dict>
-	<key>Crooked (Hawthorn)</key>
-	<dict>
-		<key>Generations</key>
-		<integer>6</integer>
-		<key>SegmentLength</key>
-		<integer>40</integer>
-		<key>Angle</key>
-		<integer>20</integer>
-		<key>Rules</key>
-		<dict>
-			<key>1</key>
-			<string>F-F+2</string>
-			<key>2</key>
-			<string>F-[[-F-F+F+FF2]+FF2]+F[+F+F+FF2]-FF+F-F2</string>
-		</dict>
-	</dict>
-	<key>My Tree</key>
-	<dict>
-		<key>Generations</key>
-		<integer>2</integer>
-		<key>SegmentLength</key>
-		<integer>30</integer>
-		<key>Rules</key>
-		<dict>
-			<key>1</key>
-			<string>F[[&lt;--1][&lt;&lt;++1]]FFL</string>
+			<key>generation</key>
+			<integer>2</integer>
+			<key>segmentLength</key>
+			<integer>30</integer>
+			<key>Rules</key>
+			<dict>
+				<key>1</key>
+				<string>F[[&lt;--1][&lt;&lt;++1]]FFL</string>
+			</dict>
 		</dict>
 	</dict>
 </dict>

@@ -6,9 +6,13 @@
 #import "LSystemNode.h"
 
 @implementation LSystemLayer {
+    NSDictionary *config_;
     CCMenu *menu_;
     CCMenu *schemeMenu_;
     LSystemNode *lsystem_;
+    
+    NSDictionary *currentSystem_;
+    NSDictionary *currentScheme_;
     NSDictionary *currentRules_;
 }
 
@@ -25,29 +29,32 @@
 {
 	if( (self=[super init])) {
         [self setTouchEnabled:YES];
-        [self showMenu];        
+        
+        config_ = [self loadConfig];
+        [self showMenu];
 	}
 	return self;
 }
 
--(void) registerWithTouchDispatcher {
-    [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+-(NSDictionary*) loadConfig {
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"Rules" withExtension:@"plist"];
+    NSDictionary *config = [NSDictionary dictionaryWithContentsOfURL:url];
+    return config;
 }
 
 -(void) showMenu {
     if (!menu_) {
         menu_ = [CCMenu menuWithItems:nil];
         
-        NSURL *url = [[NSBundle mainBundle] URLForResource:@"Rules" withExtension:@"plist"];
-        NSDictionary *ruleConfigs = [NSDictionary dictionaryWithContentsOfURL:url];
+        NSDictionary *systems = config_[@"Systems"];
         
-        NSArray *sortedKeys = [ruleConfigs.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+        NSArray *sortedKeys = [systems.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 
         for (NSString *ruleKey in sortedKeys) {
             CCMenuItemFont *item = [CCMenuItemFont itemWithString:ruleKey block:^(id sender) {
-                NSDictionary *ruleConfig = [ruleConfigs objectForKey:ruleKey];
                 menu_.visible = NO;
-                [self showLSystemWithConfig:ruleConfig];
+                currentSystem_ = [systems objectForKey:ruleKey];
+                [self showSchemeMenu];
             }];
             [menu_ addChild:item];
         }
@@ -61,18 +68,31 @@
     menu_.visible = YES;
 }
 
--(void) showSchemeMenuForSchemes:(NSDictionary*)schemes {
-    schemeMenu_ = [CCMenu menuWithItems:nil];
-//    schemeMenu_.anchorPoint = ccp(0,1);
-    schemeMenu_.position = ccp(self.contentSize.width/10,self.contentSize.height/2);
+-(void) showSchemeMenu {
+    NSAssert(currentSystem_, @"currentSystem_ should not be nil");
     
-    NSArray *sortedKeys = [schemes.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    schemeMenu_ = [CCMenu menuWithItems:nil];
+    
+    NSDictionary *globalSchemes = config_[@"Schemes"];
+    NSDictionary *systemSchemes = currentSystem_[@"Schemes"];
+    
+    // get sorted array of scheme names to use as menu items
+    NSMutableSet *schemeNames = [NSMutableSet set];
+    [schemeNames addObjectsFromArray:globalSchemes.allKeys];
+    [schemeNames addObjectsFromArray:systemSchemes.allKeys];
+    NSArray *sortedKeys = [[schemeNames allObjects] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
     for (NSString *schemeName in sortedKeys) {
         CCMenuItemFont *item = [CCMenuItemFont itemWithString:schemeName block:^(id sender) {
-            NSDictionary *schemeConfig = [schemes objectForKey:schemeName];
-            [self setupLSystemWithScheme:schemeConfig];
-            [self startLSystemWithCurrentRules];
+            schemeMenu_.visible = NO;
+            
+            // merge the global and system schemes
+            NSMutableDictionary *scheme = [NSMutableDictionary dictionary];
+            [scheme addEntriesFromDictionary:globalSchemes[schemeName]];
+            [scheme addEntriesFromDictionary:systemSchemes[schemeName]];
+            
+            currentScheme_ = scheme;
+            [self showLSystem];
         }];
         
         [schemeMenu_ addChild:item];
@@ -83,11 +103,10 @@
     [self addChild:schemeMenu_ z:2];
 }
 
--(void) showLSystemWithConfig:(NSDictionary*)config {
-    // remove current lsystem
+-(void) showLSystem {
     [lsystem_ removeFromParentAndCleanup:YES];
     
-    NSDictionary *rules = [config objectForKey:@"Rules"];
+    NSDictionary *rules = currentSystem_[@"Rules"];
     
     CGSize size = self.contentSize;
     CGSize lsysSize = size;
@@ -97,29 +116,11 @@
     lsystem_.drawOrigin = ccp(lsysSize.width/2, 0);
     lsystem_.clearColor = ccc4f(0.4, 0.4, 0.8, 1);
     
-    if (config[@"Generations"]) {
-        lsystem_.generation = [[config objectForKey:@"Generations"] integerValue];
-    }
+    // first setup using root config for system
+    [self setupLSystemWithScheme:currentSystem_];
     
-    if (config[@"SegmentLength"]) {
-        lsystem_.segmentLength = [config[@"SegmentLength"] floatValue];
-    }
-    
-    if (config[@"Angle"]) {
-        lsystem_.angle = [config[@"Angle"] floatValue];
-    }
-    
-    NSDictionary *schemes = config[@"Schemes"];
-    
-    if (schemes) {
-        NSString *schemeName = config[@"DefaultScheme"] ? config[@"DefaultScheme"] : [schemes.allKeys objectAtIndex:0];
-        CCLOG(@"Setting up LSystemNode with scheme %@", schemeName);
-        NSDictionary *segmentConfig = schemes[schemeName];
-        [self setupLSystemWithScheme:segmentConfig];
-        
-        [schemeMenu_ removeFromParentAndCleanup:YES];
-        [self showSchemeMenuForSchemes:schemes];
-    }
+    // setup using merged scheme config
+    [self setupLSystemWithScheme:currentScheme_];
     
     [self addChild:lsystem_];
     currentRules_ = rules;
@@ -131,7 +132,12 @@
 }
 
 -(void) setupLSystemWithScheme:(NSDictionary*)schemeConfig {
+    NSArray *reserved = [NSArray arrayWithObjects:@"Rules", @"Schemes", nil];
+    
     for (NSString *key in schemeConfig.allKeys) {
+        if ([reserved containsObject:key])
+            continue;
+        
         id value;
         
         if ([key isEqualToString:@"leafColor"]) {
@@ -146,6 +152,7 @@
             value = schemeConfig[key];
         }
         
+        CCLOG(@"setting value for %@", key);
         [lsystem_ setValue:value forKey:key];
     }
 }
@@ -158,6 +165,10 @@
     UIImage *img = [lsystem_ image];
     NSData *imgData = UIImagePNGRepresentation(img);
     [imgData writeToFile:filepath atomically:YES];
+}
+
+-(void) registerWithTouchDispatcher {
+    [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
 
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
