@@ -221,7 +221,12 @@
 
 -(ccColor4F) varyLeafColor:(ccColor4F)color {
     const CGFloat v = 0.1;
-    return ccc4f(color.r+CCRANDOM_MINUS1_1()*v, color.g+CCRANDOM_MINUS1_1()*v, color.b+CCRANDOM_MINUS1_1()*v, color.a);
+    return ccc4f(
+         clampf(color.r+CCRANDOM_MINUS1_1()*v, 0, 1),
+         clampf(color.g+CCRANDOM_MINUS1_1()*v, 0, 1),
+         clampf(color.b+CCRANDOM_MINUS1_1()*v, 0, 1),
+         color.a
+     );
 }
 
 -(ccColor4F) darkenLeafColor:(ccColor4F)color {
