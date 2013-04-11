@@ -4,6 +4,11 @@
 <dict>
 	<key>Schemes</key>
 	<dict>
+		<key>Bare</key>
+		<dict>
+			<key>leavesPerSegment</key>
+			<integer>0</integer>
+		</dict>
 		<key>Winter</key>
 		<dict>
 			<key>leavesPerSegment</key>
