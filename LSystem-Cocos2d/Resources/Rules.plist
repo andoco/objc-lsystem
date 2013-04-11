@@ -29,7 +29,7 @@
 			<key>leafColor</key>
 			<string>150,50,50,255</string>
 			<key>drawMode</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<key>Summer</key>
 		<dict>

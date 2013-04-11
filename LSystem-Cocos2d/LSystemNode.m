@@ -12,6 +12,8 @@
     BOOL started_;
     
     NSMutableDictionary *points_;
+    
+    CCDrawNode *drawNode_;
 }
 
 +(id) nodeWithSize:(CGSize)size {
@@ -51,6 +53,7 @@
         [self addChild:rt_];
         
         points_ = [NSMutableDictionary dictionary];
+        drawNode_ = [CCDrawNode node];
     }
     return self;
 }
@@ -81,8 +84,8 @@
         time_ = 0;
         started_ = YES;
     } else {
-        [rt_ clear:self.clearColor.r g:self.clearColor.g b:self.clearColor.b a:self.clearColor.a];
         [lsys_ draw:self.drawOrigin generation:self.generation];
+        [self drawToRenderTexture];
     }
 }
 
@@ -96,11 +99,16 @@
     // animate drawing of l-system
     if (time_ < duration_) {
         time_ += dt;
-        
-        [rt_ clear:self.clearColor.r g:self.clearColor.g b:self.clearColor.b a:self.clearColor.a];
-        
         [lsys_ draw:self.drawOrigin generation:self.generation time:time_ ease:-1];
+        [self drawToRenderTexture];
     }
+}
+
+-(void) drawToRenderTexture {
+    [rt_ beginWithClear:self.clearColor.r g:self.clearColor.g b:self.clearColor.b a:self.clearColor.a];
+    [drawNode_ visit];
+    [rt_ end];
+    [drawNode_ clear];
 }
 
 #pragma mark Graph
@@ -145,28 +153,26 @@
     
     CGFloat size1 = [self sizeForGraphPoint:gp1 generation:generation];
     CGFloat size2 = [self sizeForGraphPoint:gp2 generation:generation];
-
-    [rt_ begin];
     
     ccColor4F c = ccc4f(0.5, 0.4, 0.3, 1);
     
-    ccDrawColor4F(c.r, c.g, c.b, c.a);
-    glLineWidth(size2 * CC_CONTENT_SCALE_FACTOR());
-    ccDrawLine(from, to);
+    [drawNode_ drawSegmentFrom:from to:to radius:size2*CC_CONTENT_SCALE_FACTOR() color:c];
     
     [self drawLeavesFrom:from to:to];
     
-#if LSYSTEM_DEBUG == 1
-    ccDrawColor4F(1, 1, 1, 1);
-    ccPointSize(2);
-    ccDrawPoint(to);
-
-    CCLabelTTF *lbl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"g=%d,d=%d", generation, gp2.depth] fontName:@"Arial" fontSize:10];
-    lbl.position = ccp(to.x, to.y-10);
-    [lbl visit];
-#endif
-    
-    [rt_ end];
+//#if LSYSTEM_DEBUG == 1
+//    [rt_ begin];
+//    
+//    ccDrawColor4F(1, 1, 1, 1);
+//    ccPointSize(2);
+//    ccDrawPoint(to);
+//
+//    CCLabelTTF *lbl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"g=%d,d=%d", generation, gp2.depth] fontName:@"Arial" fontSize:10];
+//    lbl.position = ccp(to.x, to.y-10);
+//    [lbl visit];
+//    
+//    [rt_ end];
+//#endif
 }
 
 #pragma mark Drawing
@@ -197,9 +203,7 @@
 }
 
 -(void) drawPointLeafAt:(CGPoint)leafPoint size:(CGFloat)leafSize {
-    ccPointSize(leafSize);
-    ccDrawColor4B(_leafColor.r, _leafColor.g, _leafColor.b, _leafColor.a);
-    ccDrawPoint(leafPoint);
+    [drawNode_ drawDot:leafPoint radius:leafSize color:ccc4FFromccc4B(_leafColor)];
 }
 
 -(void) drawTriangleLeafAt:(CGPoint)leafPoint size:(CGFloat)leafSize direction:(CGPoint)dir {
@@ -209,14 +213,11 @@
         ccpAdd(leafPoint, ccpMult(ccpPerp(dir), -leafSize)),
         ccpAdd(leafPoint, ccpMult(dir, leafSize*2))
     };
-    ccColor4F c = [self varyLeafColor:ccc4FFromccc4B(_leafColor)];
-    ccDrawSolidPoly(vertices, 3, c);
     
-    // triangle outline
-    glLineWidth(1*CC_CONTENT_SCALE_FACTOR());
+    ccColor4F c = [self varyLeafColor:ccc4FFromccc4B(_leafColor)];
     ccColor4F outlineColor = [self darkenLeafColor:c];
-    ccDrawColor4F(outlineColor.r, outlineColor.g, outlineColor.b, outlineColor.a);
-    ccDrawPoly(vertices, 3, YES);
+    
+    [drawNode_ drawPolyWithVerts:vertices count:3 fillColor:c borderWidth:1*CC_CONTENT_SCALE_FACTOR() borderColor:outlineColor];
 }
 
 -(ccColor4F) varyLeafColor:(ccColor4F)color {
