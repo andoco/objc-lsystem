@@ -24,9 +24,12 @@ typedef enum {
 /** Color used to clear the drawing canvas. Defaults to transparent. */
 @property (nonatomic, assign) ccColor4F clearColor;
 
-#pragma mark Segments
-@property (nonatomic, assign) CGFloat baseWidth;
-@property (nonatomic, assign) CGFloat widthScaleFactor;
+@property (nonatomic, assign) CGFloat minSegmentSize;
+
+/** The lower the generationSizeFactor the greater the change in size between generations */
+@property (nonatomic, assign) CGFloat generationSizeFactor;
+/** The lower the depthSizeFactor the smaller the affect of depth on the change in size in a generation */
+@property (nonatomic, assign) CGFloat depthSizeFactor;
 
 #pragma mark Leaves
 @property (nonatomic, assign) LSystemLeafDrawMode drawMode;

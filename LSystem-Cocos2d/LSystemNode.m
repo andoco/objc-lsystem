@@ -1,5 +1,6 @@
 #import "LSystemNode.h"
 
+#import "GraphPoint.h"
 #import "LeafDrawCommand.h"
 
 @implementation LSystemNode {
@@ -9,6 +10,8 @@
     LSystem *lsys_;
     CCRenderTexture *rt_;
     BOOL started_;
+    
+    NSMutableDictionary *points_;
 }
 
 +(id) nodeWithSize:(CGSize)size {
@@ -27,8 +30,9 @@
         self.angle = 20;
         
         // segments
-        self.baseWidth = size.width / 1000;
-        self.widthScaleFactor = 1.2;
+        self.minSegmentSize = 1;
+        self.generationSizeFactor = 0.4;
+        self.depthSizeFactor = 0.3;
         
         // leaves
         self.drawMode = LSystemNodeLeafDrawModeTriangles;
@@ -45,6 +49,8 @@
         rt_.anchorPoint = ccp(0.5,0.5);
         rt_.position = centre;
         [self addChild:rt_];
+        
+        points_ = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -97,37 +103,73 @@
     }
 }
 
-#pragma mark Segments
+#pragma mark Graph
 
--(CGFloat) widthForGeneration:(NSInteger)generation {
-    return self.baseWidth + (self.baseWidth * generation * self.widthScaleFactor);
+-(GraphPoint*) graphPointForPoint:(CGPoint)p {
+    return points_[[NSValue valueWithCGPoint:p]];
 }
 
+-(void) addGraphPoint:(GraphPoint*)gp {
+    points_[[NSValue valueWithCGPoint:gp.point]] = gp;
+}
+
+-(CGFloat) sizeForGeneration:(NSInteger)generation depth:(NSInteger)depth {
+    return self.minSegmentSize + ((generation / self.generationSizeFactor) / ((self.depthSizeFactor * depth) + 1));
+}
+
+-(CGFloat) sizeForGraphPoint:(GraphPoint*)gp generation:(NSInteger)generation {
+    return [self sizeForGeneration:generation depth:gp.depth];
+}
+
+-(void) updateGraphForPoint:(CGPoint)p1 p2:(CGPoint)p2 {
+    GraphPoint *gp1 = [self graphPointForPoint:p1];
+    
+    if (!gp1) {
+        // this is the first point in the graph
+        gp1 = [GraphPoint graphPointWithPoint:p1 depth:0];
+        [self addGraphPoint:gp1];
+    }
+    
+    GraphPoint *gp2 = [GraphPoint graphPointWithPoint:p2 depth:gp1.depth+1];
+    
+    [self addGraphPoint:gp2];
+}
+
+#pragma mark SegmentDrawer
+
 -(void) segmentFrom:(CGPoint)from to:(CGPoint)to generation:(NSInteger)generation time:(CGFloat)time identifier:(NSInteger)identifier {
+    [self updateGraphForPoint:from p2:to];
+    
+    GraphPoint *gp1 = [self graphPointForPoint:from];
+    GraphPoint *gp2 = [self graphPointForPoint:to];
+    
+    CGFloat size1 = [self sizeForGraphPoint:gp1 generation:generation];
+    CGFloat size2 = [self sizeForGraphPoint:gp2 generation:generation];
+
     [rt_ begin];
     
-//    glBlendFunc(GL_ONE,GL_ZERO);
-    
-    CGFloat generationWidth = [self widthForGeneration:generation];
-    CGFloat width = generationWidth;
-    
-    //    CCLOG(@"id=%d, generation=%d, time=%f, width=%f", identifier, generation, time, width);
-    
-//    ccColor4F c = ccc4f(0.5, 0.2 + (1.0 / (generation + 1) * 0.8), 0.3, 1);
     ccColor4F c = ccc4f(0.5, 0.4, 0.3, 1);
     
     ccDrawColor4F(c.r, c.g, c.b, c.a);
-    glLineWidth(width * CC_CONTENT_SCALE_FACTOR());
+    glLineWidth(size2 * CC_CONTENT_SCALE_FACTOR());
     ccDrawLine(from, to);
     
-//    ccDrawColor4F(1, 1, 1, 1);
-//    ccPointSize(2);
-//    ccDrawPoint(to);
-
     [self drawLeavesFrom:from to:to];
+    
+#if LSYSTEM_DEBUG == 1
+    ccDrawColor4F(1, 1, 1, 1);
+    ccPointSize(2);
+    ccDrawPoint(to);
+
+    CCLabelTTF *lbl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"g=%d,d=%d", generation, gp2.depth] fontName:@"Arial" fontSize:10];
+    lbl.position = ccp(to.x, to.y-10);
+    [lbl visit];
+#endif
     
     [rt_ end];
 }
+
+#pragma mark Drawing
 
 -(void) drawLeavesFrom:(CGPoint)from to:(CGPoint)to {
     CGPoint diff = ccpSub(to, from);

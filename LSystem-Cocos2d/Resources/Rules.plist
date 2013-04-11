@@ -204,11 +204,11 @@
 		<key>Straight</key>
 		<dict>
 			<key>generation</key>
-			<integer>1</integer>
+			<integer>2</integer>
 			<key>Rules</key>
 			<dict>
 				<key>1</key>
-				<string>FFF</string>
+				<string>FFF1</string>
 			</dict>
 		</dict>
 		<key>Branches</key>
