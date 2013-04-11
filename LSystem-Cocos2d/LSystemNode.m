@@ -203,7 +203,8 @@
 }
 
 -(void) drawPointLeafAt:(CGPoint)leafPoint size:(CGFloat)leafSize {
-    [drawNode_ drawDot:leafPoint radius:leafSize color:ccc4FFromccc4B(_leafColor)];
+    ccColor4F c = [self varyLeafColor:ccc4FFromccc4B(_leafColor)];
+    [drawNode_ drawDot:leafPoint radius:leafSize color:c];
 }
 
 -(void) drawTriangleLeafAt:(CGPoint)leafPoint size:(CGFloat)leafSize direction:(CGPoint)dir {
