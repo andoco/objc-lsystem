@@ -162,7 +162,7 @@
     
     ccColor4F c = ccc4f(0.5, 0.4, 0.3, 1);
     
-    [drawNode_ drawSegmentFrom:from to:to radius:size2*CC_CONTENT_SCALE_FACTOR() color:c];
+    [drawNode_ drawSegmentFrom:from to:to radius:size2 color:c];
     
     [self drawLeavesFrom:from to:to];
     
@@ -214,7 +214,7 @@
     ccColor4F c = [self varyLeafColor:ccc4FFromccc4B(_leafColor)];
     ccColor4F outlineColor = [self darkenLeafColor:c];
     
-    [drawNode_ drawPolyWithVerts:vertices count:3 fillColor:c borderWidth:1*CC_CONTENT_SCALE_FACTOR() borderColor:outlineColor];
+    [drawNode_ drawPolyWithVerts:vertices count:3 fillColor:c borderWidth:1 borderColor:outlineColor];
 }
 
 -(ccColor4F) varyLeafColor:(ccColor4F)color {
