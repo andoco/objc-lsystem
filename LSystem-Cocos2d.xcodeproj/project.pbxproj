@@ -29,6 +29,7 @@
 		497760D115307B6700D9F40D /* LSystemLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 497760D015307B6700D9F40D /* LSystemLayer.m */; };
 		49C549D515A8D42F00278B94 /* LSystemNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C549D415A8D42E00278B94 /* LSystemNode.m */; };
 		49EB745317171DE500A5FCF3 /* GraphPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 49EB745217171DE400A5FCF3 /* GraphPoint.m */; };
+		49EB745B1717D5E100A5FCF3 /* LSystemDebugLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49EB745A1717D5E100A5FCF3 /* LSystemDebugLayer.m */; };
 		49FD01B7170849F900B75B30 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49FD01B4170849F900B75B30 /* Default-568h@2x.png */; };
 		49FD01B8170849F900B75B30 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 49FD01B5170849F900B75B30 /* Default-Landscape~ipad.png */; };
 		49FD01B9170849F900B75B30 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49FD01B6170849F900B75B30 /* Default@2x.png */; };
@@ -180,6 +181,8 @@
 		49C549D415A8D42E00278B94 /* LSystemNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSystemNode.m; sourceTree = "<group>"; };
 		49EB745117171DE400A5FCF3 /* GraphPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphPoint.h; sourceTree = "<group>"; };
 		49EB745217171DE400A5FCF3 /* GraphPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphPoint.m; sourceTree = "<group>"; };
+		49EB74591717D5E100A5FCF3 /* LSystemDebugLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSystemDebugLayer.h; sourceTree = "<group>"; };
+		49EB745A1717D5E100A5FCF3 /* LSystemDebugLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSystemDebugLayer.m; sourceTree = "<group>"; };
 		49FD01B4170849F900B75B30 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		49FD01B5170849F900B75B30 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		49FD01B6170849F900B75B30 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
@@ -499,6 +502,8 @@
 				497760CA15307B6700D9F40D /* AppDelegate.m */,
 				49EB745117171DE400A5FCF3 /* GraphPoint.h */,
 				49EB745217171DE400A5FCF3 /* GraphPoint.m */,
+				49EB74591717D5E100A5FCF3 /* LSystemDebugLayer.h */,
+				49EB745A1717D5E100A5FCF3 /* LSystemDebugLayer.m */,
 				497760CF15307B6700D9F40D /* LSystemLayer.h */,
 				497760D015307B6700D9F40D /* LSystemLayer.m */,
 				49C549D315A8D42E00278B94 /* LSystemNode.h */,
@@ -1091,6 +1096,7 @@
 				49FD04F41708879C00B75B30 /* vec3.c in Sources */,
 				49FD04F51708879C00B75B30 /* vec4.c in Sources */,
 				49EB745317171DE500A5FCF3 /* GraphPoint.m in Sources */,
+				49EB745B1717D5E100A5FCF3 /* LSystemDebugLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

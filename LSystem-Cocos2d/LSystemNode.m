@@ -2,6 +2,7 @@
 
 #import "GraphPoint.h"
 #import "LeafDrawCommand.h"
+#import "LSystemDebugLayer.h"
 
 @implementation LSystemNode {
     CGPoint pos_;
@@ -84,8 +85,8 @@
         time_ = 0;
         started_ = YES;
     } else {
-        [lsys_ draw:self.drawOrigin generation:self.generation];
-        [self drawToRenderTexture];
+        time_ = -1;
+        [self updateLSystem];
     }
 }
 
@@ -99,9 +100,17 @@
     // animate drawing of l-system
     if (time_ < duration_) {
         time_ += dt;
-        [lsys_ draw:self.drawOrigin generation:self.generation time:time_ ease:-1];
-        [self drawToRenderTexture];
+        [self updateLSystem];
     }
+}
+
+-(void) updateLSystem {
+#if LSYSTEM_DEBUG == 1
+    [[LSystemDebugLayer sharedDebugLayer] clear];
+#endif
+
+    [lsys_ draw:self.drawOrigin generation:self.generation time:time_ ease:-1];
+    [self drawToRenderTexture];
 }
 
 -(void) drawToRenderTexture {
@@ -160,19 +169,9 @@
     
     [self drawLeavesFrom:from to:to];
     
-//#if LSYSTEM_DEBUG == 1
-//    [rt_ begin];
-//    
-//    ccDrawColor4F(1, 1, 1, 1);
-//    ccPointSize(2);
-//    ccDrawPoint(to);
-//
-//    CCLabelTTF *lbl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"g=%d,d=%d", generation, gp2.depth] fontName:@"Arial" fontSize:10];
-//    lbl.position = ccp(to.x, to.y-10);
-//    [lbl visit];
-//    
-//    [rt_ end];
-//#endif
+#if LSYSTEM_DEBUG == 1
+    [[LSystemDebugLayer sharedDebugLayer] addSegmentLabelForPoint:to generation:generation depth:gp2.depth identifier:identifier];
+#endif
 }
 
 #pragma mark Drawing

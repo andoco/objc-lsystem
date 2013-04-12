@@ -3,6 +3,7 @@
 #import "DrawContext.h"
 #import "LSystem.h"
 #import "DrawState.h"
+#import "LSystemDebugLayer.h"
 #import "LSystemNode.h"
 
 @implementation LSystemLayer {
@@ -21,6 +22,10 @@
 	CCScene *scene = [CCScene node];
 	LSystemLayer *layer = [LSystemLayer node];
 	[scene addChild: layer];
+    
+#if LSYSTEM_DEBUG == 1
+    [scene addChild:[LSystemDebugLayer sharedDebugLayer]];
+#endif
     
 	return scene;
 }
