@@ -5,6 +5,6 @@
 
 @interface LeafDrawCommand : NSObject <LSysCommand>
 
-@property (nonatomic, strong) CCRenderTexture *rt;
+@property (nonatomic, strong) CCDrawNode *drawNode;
 
 @end

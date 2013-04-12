@@ -71,7 +71,7 @@
     lsys_.cost = 0.1;
     
     LeafDrawCommand *leafCommand = [[LeafDrawCommand alloc] init];
-    leafCommand.rt = rt_;
+    leafCommand.drawNode = drawNode_;
     lsys_.commands = [NSDictionary dictionaryWithObjectsAndKeys:leafCommand, @"L", nil];
 
     if (animate) {
@@ -108,12 +108,9 @@
 #if LSYSTEM_DEBUG == 1
     [[LSystemDebugLayer sharedDebugLayer] clear];
 #endif
-
+    
     [lsys_ draw:self.drawOrigin generation:self.generation time:time_ ease:-1];
-    [self drawToRenderTexture];
-}
 
--(void) drawToRenderTexture {
     [rt_ beginWithClear:self.clearColor.r g:self.clearColor.g b:self.clearColor.b a:self.clearColor.a];
     [drawNode_ visit];
     [rt_ end];
